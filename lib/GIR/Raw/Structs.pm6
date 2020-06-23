@@ -63,23 +63,23 @@ class GIArgument is repr<CUnion> does GLib::Roles::Pointers is export {
   has gpointer $.v_pointer;
 }
 
-constant GIArgInfo            is export := GIBaseInfo;
-constant GICallableInfo       is export := GIBaseInfo;
-constant GICallbackInfo       is export := GIBaseInfo;
-constant GIConstantInfo       is export := GIBaseInfo;
-constant GIEnumInfo           is export := GIBaseInfo;
-constant GIFieldInfo          is export := GIBaseInfo;
-constant GIFunctionInfo       is export := GIBaseInfo;
-constant GIInterfaceInfo      is export := GIBaseInfo;
-constant GIObjectInfo         is export := GIBaseInfo;
-constant GIPropertyInfo       is export := GIBaseInfo;
-constant GIRegisteredTypeInfo is export := GIBaseInfo;
-constant GISignalInfo         is export := GIBaseInfo;
-constant GIStructInfo         is export := GIBaseInfo;
-constant GITypeInfo           is export := GIBaseInfo;
-constant GIUnionInfo          is export := GIBaseInfo;
-constant GIValueInfo          is export := GIBaseInfo;
-constant GIVFuncInfo          is export := GIBaseInfo;
+class GIArgInfo            is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GICallableInfo       is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GICallbackInfo       is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIConstantInfo       is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIEnumInfo           is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIFieldInfo          is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIFunctionInfo       is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIInterfaceInfo      is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIObjectInfo         is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIPropertyInfo       is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIRegisteredTypeInfo is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GISignalInfo         is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIStructInfo         is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GITypeInfo           is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIUnionInfo          is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIValueInfo          is repr<CPointer> does GLib::Roles::Pointers is export { }
+class GIVFuncInfo          is repr<CPointer> does GLib::Roles::Pointers is export { }
 
 constant gir                  is export  = 'girepository-1.0',v1;
 
