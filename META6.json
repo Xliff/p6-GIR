@@ -8,12 +8,14 @@
     "license": "GPL-3.0",
     "source-url": "https://github.com/Xliff/p6-GIR.git",
     "provides": {
-      "GIR::Raw::Enums"    :  "lib/GIR/Raw/Enums.pm6"    ,
-      "GIR::Raw::Structs"  :  "lib/GIR/Raw/Structs.pm6"  ,
-      "GIR::Raw::Exports"  :  "lib/GIR/Raw/Exports.pm6"  ,
-      "GIR::Raw::Types"    :  "lib/GIR/Raw/Types.pm6"    ,
-      "GIR::Raw::BaseInfo" :  "lib/GIR/Raw/BaseInfo.pm6" ,
-      "GIR::BaseInfo"      :  "lib/GIR/BaseInfo.pm6"     
+      "GIR::Raw::Enums"      :  "lib/GIR/Raw/Enums.pm6"      ,
+      "GIR::Raw::Structs"    :  "lib/GIR/Raw/Structs.pm6"    ,
+      "GIR::Raw::Exports"    :  "lib/GIR/Raw/Exports.pm6"    ,
+      "GIR::Raw::Types"      :  "lib/GIR/Raw/Types.pm6"      ,
+      "GIR::Raw::BaseInfo"   :  "lib/GIR/Raw/BaseInfo.pm6"   ,
+      "GIR::Raw::Repository" :  "lib/GIR/Raw/Repository.pm6" ,
+      "GIR::BaseInfo"        :  "lib/GIR/BaseInfo.pm6"       ,
+      "GIR::Repository"      :  "lib/GIR/Repository.pm6"     
     },
     "name": "p6-GIR",
     "perl": "6.c",
