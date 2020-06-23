@@ -1,8 +1,10 @@
 use v6.c;
 
+use NativeCall;
+
 use GLib::Raw::Definitions;
 use GLib::Raw::Object;
-use GIR::Raw::Enum;
+use GIR::Raw::Enums;
 
 use GLib::Roles::Pointers;
 

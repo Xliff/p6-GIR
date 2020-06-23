@@ -1,0 +1,5 @@
+typePrefix=GI
+prefix=GIR::
+modules=GIR::Raw::Types
+backups=backup,google-backup,azure-backup
+libdirs=lib

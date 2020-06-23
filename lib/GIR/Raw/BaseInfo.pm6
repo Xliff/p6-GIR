@@ -1,9 +1,10 @@
 use v6.c;
 
+use NativeCall;
+
 use GIR::Raw::Types;
 
 unit package GIR::Raw::BaseInfo;
-
 
 ### /usr/include/gobject-introspection-1.0/gibaseinfo.h
 

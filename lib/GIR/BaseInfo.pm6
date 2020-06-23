@@ -1,5 +1,6 @@
 use v6.c;
 
+use NativeCall;
 use Method::Also;
 
 use GIR::Raw::Types;
@@ -34,7 +35,7 @@ class GIR::BaseInfo {
   ) {
     my GIInfoType $t = $type;
     my GITypelib $tl = $typelib;
-    my guint32    $o = $offset
+    my guint32    $o = $offset;
     my    $base-info = g_info_new($t, $container, $tl, $o);
 
     $base-info ?? self.bless(:$base-info) !! Nil;
@@ -106,7 +107,7 @@ class GIR::BaseInfo {
       infotype
     >
   {
-    g_base_info_get_type;
+    g_base_info_get_type($!bi);
   }
 
   method get_typelib (:$raw = False)
@@ -124,7 +125,7 @@ class GIR::BaseInfo {
   }
 
   method get_type is also<get-type> {
-    state ($n, $t)
+    state ($n, $t);
 
     unstable_get_type( self.^name, &g_base_info_gtype_get_type, $n, $t );
   }
