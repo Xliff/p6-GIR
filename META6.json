@@ -1,0 +1,30 @@
+{
+    "depends": [
+        "p6-GLib",
+    ],
+    "description": "Perl6 library bindings for the GObject Introspection (GIR) system",
+    "version": "r0.1",
+    "meta-version": "0",
+    "license": "GPL-3.0",
+    "source-url": "https://github.com/Xliff/p6-GIR.git",
+    "provides": {
+      "GIR::Raw::Enums"    :  "lib/GIR/Raw/Enums.pm6"    ,
+      "GIR::Raw::Structs"  :  "lib/GIR/Raw/Structs.pm6"  ,
+      "GIR::Raw::Exports"  :  "lib/GIR/Raw/Exports.pm6"  ,
+      "GIR::Raw::Types"    :  "lib/GIR/Raw/Types.pm6"    ,
+      "GIR::Raw::BaseInfo" :  "lib/GIR/Raw/BaseInfo.pm6" ,
+      "GIR::BaseInfo"      :  "lib/GIR/BaseInfo.pm6"     
+    },
+    "name": "p6-GIR",
+    "perl": "6.c",
+    "test-depends": ["Test::META"],
+    "build-depends": [
+        "Text::Table::Simple",
+        "Dependency::Sort",
+        "Color",
+        "RandomColor",
+        "File::Find"
+    ],
+    "support": {"source": null},
+    "authors": ["clifton.wood@gmail.com"],
+}
