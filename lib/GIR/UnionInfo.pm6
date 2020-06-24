@@ -24,7 +24,7 @@ class GIR::UnionInfo is GIR::RegisteredTypeInfo {
   method setUnionInfo (GIUnionInfoAncestry $_) {
     my $to-parent;
 
-    $!si = do {
+    $!ui = do {
       when GIUnionInfo {
         $to-parent = cast(GIRegisteredTypeInfo, $_);
         $_;
@@ -32,7 +32,7 @@ class GIR::UnionInfo is GIR::RegisteredTypeInfo {
 
       default {
         $to-parent = $_;
-        cast(GIRegisteredTypeInfo, $_);
+        cast(GIUnionInfo, $_);
       }
     }
 
@@ -41,7 +41,7 @@ class GIR::UnionInfo is GIR::RegisteredTypeInfo {
 
   method GStreamer::Raw::Unions::GIUnionInfo
     is also<GIUnionInfo>
-  { $!si }
+  { $!ui }
 
   method new (GIUnionInfoAncestry $union-info) {
     $union-info ?? self.bless(:$union-info) !! Nil;
