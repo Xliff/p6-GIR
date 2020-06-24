@@ -5,6 +5,7 @@ use Method::Also;
 use GIR::Raw::Types;
 
 use GIR::BaseInfo;
+use GIR::TypeInfo;
 
 our subset GIConstantInfoAncestry is export of Mu
   where GIConstantInfo | GIBaseInfo;

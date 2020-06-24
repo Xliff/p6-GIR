@@ -6,6 +6,7 @@ use GIR::Raw::Types;
 use GIR::Raw::FieldInfo;
 
 use GIR::BaseInfo;
+use GIR::TypeInfo;
 
 our subset GIFieldInfoAncestry is export of Mu
   where GIFieldInfo | GIBaseInfo;

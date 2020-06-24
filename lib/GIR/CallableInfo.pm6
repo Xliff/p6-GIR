@@ -8,6 +8,7 @@ use GIR::Raw::Types;
 use GIR::Raw::CallableInfo;
 
 use GIR::BaseInfo;
+use GIR::TypeInfo;
 
 our subset GICallableInfoAncestry is export of Mu
   where GICallableInfo | GIBaseInfo;

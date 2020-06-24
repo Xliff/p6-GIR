@@ -6,6 +6,7 @@ use GIR::Raw::Types;
 use GIR::Raw::ArgInfo;
 
 use GIR::BaseInfo;
+use GIR::TypeInfo;
 
 our subset GIArgInfoAncestry is export of Mu
   where GIArgInfo | GIBaseInfo;
