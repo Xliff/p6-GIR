@@ -54,7 +54,7 @@ class GIR::SignalInfo is GIR::CallableInfo {
     my $v = g_signal_info_get_class_closure($!si);
 
     $v ??
-      ( $raw ?? $v !! GIR::VFuncInfo.new($v) )
+      ( $raw ?? $v !! ::('GIR::VFuncInfo').new($v) )
       !!
       Nil;
   }
