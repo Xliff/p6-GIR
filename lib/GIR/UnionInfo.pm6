@@ -11,8 +11,41 @@ use GIR::FunctionInfo;
 use GIR::RegisteredTypeInfo;
 use GIR::TypeInfo;
 
+our subset GIUnionInfoAncestry is export of Mu
+  where GIUnionInfo | GIRegisteredTypeInfoAncestry;
+
 class GIR::UnionInfo is GIR::RegisteredTypeInfo {
   has GIUnionInfo $!ui;
+
+  submethod BUILD (:$union-info) {
+    self.setUnionInfo($union-info) if $union-info;
+  }
+
+  method setUnionInfo (GIUnionInfoAncestry $_) {
+    my $to-parent;
+
+    $!si = do {
+      when GIUnionInfo {
+        $to-parent = cast(GIRegisteredTypeInfo, $_);
+        $_;
+      }
+
+      default {
+        $to-parent = $_;
+        cast(GIRegisteredTypeInfo, $_);
+      }
+    }
+
+    self.setGIRegisteredTypeInfo($to-parent);
+  }
+
+  method GStreamer::Raw::Unions::GIUnionInfo
+    is also<GIUnionInfo>
+  { $!si }
+
+  method new (GIUnionInfoAncestry $union-info) {
+    $union-info ?? self.bless(:$union-info) !! Nil;
+  }
 
   method find_method (Str() $name, :$raw = False) is also<find-method> {
     my $m = g_union_info_find_method($!ui, $name);
