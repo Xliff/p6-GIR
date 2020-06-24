@@ -12,7 +12,7 @@ our subset GIPropertyInfoAncestry is export of Mu
 class GIR::PropertyInfo is GIR::BaseInfo {
   has GIPropertyInfo $!pi;
 
-submethod BUILD (:$property-info) {
+  submethod BUILD (:$property-info) {
     self.setGIPropertyInfo($property-info) if $property-info;
   }
 
