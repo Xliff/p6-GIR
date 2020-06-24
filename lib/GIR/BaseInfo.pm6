@@ -12,16 +12,16 @@ class GIR::BaseInfo {
   has GIBaseInfo $!bi;
 
   submethod BUILD (:$base-info) {
-    self.setBaseInfo($base-info);
+    self.setGIBaseInfo($base-info) if $base-info;
   }
 
   # Protected
-  method setBaseInfo (GIBaseInfo $base-info) {
+  method setGIBaseInfo (GIBaseInfo $base-info) {
     $!bi = $base-info;
   }
 
   method GIR::Raw::Structs::GIBaseInfo
-    # is also<GIBaseInfo>
+    is also<GIBaseInfo>
   { $!bi }
 
   multi method new (GIBaseInfo $base-info) {
