@@ -52,8 +52,13 @@ class GIR::ConstantInfo is GIR::BaseInfo {
     g_constant_info_free_value($!ci, $value);
   }
 
-  method get_type is also<get-type> {
-    g_constant_info_get_type($!ci);
+  method get_type (:$raw = False) is also<get-type> {
+    my $t = g_constant_info_get_type($!ci);
+
+    $t ??
+      ( $raw ?? $t !! GIR::TypeInfo.new($t) )
+      !!
+      Nil;
   }
 
   proto method get_value (|)

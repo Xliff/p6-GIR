@@ -74,13 +74,18 @@ class GIR::FieldInfo is GIR::BaseInfo {
     g_field_info_get_size($!fi);
   }
 
-  method get_type
+  method get_type (:$raw = False)
     is also<
       get-type
       type
     >
   {
-    g_field_info_get_type($!fi);
+    my $t = g_field_info_get_type($!fi);
+
+    $t ??
+      ( $raw ?? $t !! GIR::TypeInfo.new($t) )
+      !!
+      Nil;
   }
 
   method set_field (gpointer $mem, GIArgument $value) is also<set-field> {

@@ -83,8 +83,19 @@ class GIR::CallableInfo is GIR::BaseInfo {
     @attrs;
   }
 
-  method get_return_type is also<get-return-type> {
-    g_callable_info_get_return_type($!ci);
+  method get_return_type (:$raw = False)
+    is also<
+      get-return-type
+      return_type
+      return-type
+    >
+  {
+    my $t = g_callable_info_get_return_type($!ci);
+
+    $t ??
+      ( $raw ?? $t !! GIR::TypeInfo.new($t) )
+      !!
+      Nil;
   }
 
   multi method invoke (
