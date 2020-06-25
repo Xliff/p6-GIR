@@ -7,9 +7,12 @@ use NativeCall;
 use GIR::Raw::Types;
 use GIR::Raw::Repository;
 
+use GLib::GList;
 use GIR::BaseInfo;
 use GIR::EnumInfo;
+use GIR::Typelib;
 
+use GLib::Roles::ListData;
 use GLib::Roles::Object;
 
 our subset GIRepositoryAncestry is export of Mu
@@ -55,7 +58,6 @@ class GIR::Repository {
 
     $repository ?? self.bless( :$repository ) !! Nil;
   }
-
 
   method dump (
     GIR::Repository:U:
@@ -187,8 +189,20 @@ class GIR::Repository {
     g_irepository_get_option_group();
   }
 
-  method get_search_path (GIR::Repository:U: ) is also<get-search-path> {
-    g_irepository_get_search_path();
+  method get_search_path (GIR::Repository:U: :$glist =  False, :$raw = False )
+    is also<
+      get-search-path
+      search_path
+      search-path
+    >
+  {
+    my $spl = g_irepository_get_search_path();
+
+    return Nil unless $spl;
+    return $spl if $glist && $raw;
+
+    $spl = GLib::GList.new($spl) but GLib::Roles::ListData[Str];
+    $spl.Array;
   }
 
   method get_shared_library (Str() $namespace) is also<get-shared-library> {
@@ -240,8 +254,8 @@ class GIR::Repository {
 
   method load_typelib (
     GITypelib $typelib,
-    Int() $flags,
-    CArray[Pointer[GError]] $error
+    Int() $flags                   = 0,
+    CArray[Pointer[GError]] $error = gerror
   )
     is also<load-typelib>
   {
@@ -273,31 +287,37 @@ class GIR::Repository {
 
   method require (
     Str() $namespace,
-    Str() $version,
-    Int() $flags,
-    CArray[Pointer[GError]] $error = gerror
+    Str() $version                 = Str,
+    Int() $flags                   = 0,
+    CArray[Pointer[GError]] $error = gerror,
+    :$raw                          = False
   ) {
     my GIRepositoryLoadFlags $f = $flags;
 
     clear_error;
-    my $rv = g_irepository_require($!gir, $namespace, $version, $f, $error);
+    my $t = g_irepository_require($!gir, $namespace, $version, $f, $error);
     set_error($error);
-    $rv;
+
+    $t ??
+      ( $raw ?? $t !! GIR::Typelib.new($t) )
+      !!
+      Nil;
   }
 
   method require_private (
     Str() $typelib_dir,
     Str() $namespace,
-    Str() $version,
-    Int() $flags,
-    CArray[Pointer[GError]] $error = gerror
+    Str() $version                 = Str,
+    Int() $flags                   = 0,
+    CArray[Pointer[GError]] $error = gerror,
+    :$raw                          = False
   )
     is also<require-private>
   {
     my GIRepositoryLoadFlags $f = $flags;
 
     clear_error;
-    my $rv = g_irepository_require_private(
+    my $t = g_irepository_require_private(
       $!gir,
       $typelib_dir,
       $namespace,
@@ -306,7 +326,11 @@ class GIR::Repository {
       $error
     );
     set_error($error);
-    $rv;
+
+    $t ??
+      ( $raw ?? $t !! GIR::Typelib.new($t) )
+      !!
+      Nil;
   }
 
 }
