@@ -30,3 +30,51 @@ If you just want to run the examples, you can do:
 ```
 
 Unfortunately, compile times are very long for this project, but I hope you find it interesting!
+
+Some nifty examples that can be done using GIR:
+
+List all objects in a typelib `(this example uses GIO)`:
+```
+use GIR::Raw::Types;
+use GIR::Repository;
+
+my $repo = GIR::Repository.get-default;
+my $t = $repo.require("Gio");
+
+$repo.get-n-infos("Gio").say;
+for ^$repo.get-n-infos("Gio") {
+  my $bi = $repo.get-info("Gio", $_);
+  next unless $bi.infotype == GI_INFO_TYPE_OBJECT;
+  say "{ $bi.name } - { $bi.infotype }"
+}
+```
+
+List all signals provided by a GObject:
+```
+use GIR::Raw::Types;
+use GIR::ObjectInfo;
+use GIR::Repository;
+
+my $repo = GIR::Repository.get-default;
+my $t = $repo.require("Gio");
+my $fmi = GIR::ObjectInfo.new(
+  $repo.find-by-name("Gio", "MountOperation", :raw)
+);
+
+say $fmi.get-signal($_).name for ^$fmi.s-elems;
+```
+
+List all properties provided by a GObject:
+```
+use GIR::Raw::Types;
+use GIR::ObjectInfo;
+use GIR::Repository;
+
+my $repo = GIR::Repository.get-default;
+my $t = $repo.require("Gio");
+my $fmi = GIR::ObjectInfo.new(
+  $repo.find-by-name("Gio", "MountOperation", :raw)
+);
+
+say $fmi.get-property($_).name for ^$fmi.p-elems;
+```
