@@ -29,7 +29,7 @@ class GIR::RegisteredTypeInfo is GIR::BaseInfo {
 
       default {
         $to-parent = $_;
-        cast(GIBaseInfo, $_);
+        cast(GIRegisteredTypeInfo, $_);
       }
     }
 
