@@ -107,7 +107,7 @@ class GIR::BaseInfo {
       infotype
     >
   {
-    g_base_info_get_type($!bi);
+    GIInfoTypeEnum( g_base_info_get_type($!bi) );
   }
 
   method get_typelib (:$raw = False)
