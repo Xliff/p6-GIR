@@ -102,7 +102,9 @@ class GIR::Repository {
       Nil;
   }
 
-  method find_by_gtype (GType() $gtype, :$raw = False) is also<find-by-gtype> {
+  method find_by_gtype (Int() $gtype, :$raw = False) is also<find-by-gtype> {
+    return Nil unless $gtype;
+    
     my $b = g_irepository_find_by_gtype($!gir, $gtype);
 
     $b ??
@@ -163,11 +165,11 @@ class GIR::Repository {
       is also<get-object-gtype-interfaces>
   { * }
 
-  multi method get_object_gtype_interfaces (GType() $gtype) {
+  multi method get_object_gtype_interfaces (Int() $gtype) {
     samewith($gtype, $, $);
   }
   multi method get_object_gtype_interfaces (
-    GType() $gtype,
+    Int() $gtype,
     $n_interfaces_out is rw,
     $interfaces_out is rw,
   ) {

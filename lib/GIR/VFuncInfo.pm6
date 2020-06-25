@@ -47,7 +47,7 @@ class GIR::VFuncInfo is GIR::CallableInfo {
   }
 
   method get_address (
-    GType() $implementor_gtype,
+    Int() $implementor_gtype,
     CArray[Pointer[GError]] $error = gerror
   )
     is also<get-address>
@@ -102,7 +102,7 @@ class GIR::VFuncInfo is GIR::CallableInfo {
   }
 
   multi method invoke (
-    GType() $implementor,
+    Int() $implementor,
     @in,
     @out,
     GIArgument $return_value,
@@ -122,7 +122,7 @@ class GIR::VFuncInfo is GIR::CallableInfo {
     );
   }
   multi method invoke (
-    GType $implementor,
+    Int() $implementor,
     Pointer $in_args,
     gint $n_in_args,
     Pointer $out_args,
