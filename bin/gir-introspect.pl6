@@ -59,7 +59,7 @@ sub get-param-list ($mi) {
 
   sub arg-str ($a) {
     #"{ $a.type.type-tag }{ $a.type.is-pointer ?? '*' !! '' }\t{ $a.name }";
-    "{ $a.type.tag-name }{ ptr-mark($a.type) } { $a.name }";
+    "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a.type) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
@@ -87,16 +87,18 @@ sub list-callables ($retrieve, $num) {
 
       $ret ~= '  ';
       if $mi.n-args == 1 {
-        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
-                     $mi.name } ({ get-param-list($mi) })\n\n";
+        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } ({
+                   get-param-list($mi) })\n\n";
         # $ret ~= "{ $rt.name }{ ptr-mark($rt) } {
         #       $mi.name } (\n{ '' })\n\n";=
       } elsif $mi.n-args {
-        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
-                     $mi.name } (\n{ get-param-list($mi) }\n{ ' ' x 23 })\n\n";
+        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } (\n{
+                   get-param-list($mi) }\n{ ' ' x 23 })\n\n";
       } else {
-        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
-                     $mi.name } ()\n\n";
+        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } ()\n\n";
       }
     }
   }
@@ -139,8 +141,9 @@ sub MAIN (
   my $parent-name = $*o.parent ?? $*o.parent.name !! '';
   $parent-name //= 'None';
 
+  my $*p = $repo.get-c-prefix($typelib);
   say qq:to/OBJINFO/;
-    Prefix: { $repo.get-c-prefix($typelib) }
+    Prefix: { $*p }
 
     Object name: { $*o.type-name } --- Parent: { $parent-name }
 
