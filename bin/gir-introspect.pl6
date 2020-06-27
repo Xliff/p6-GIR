@@ -50,54 +50,69 @@ sub list-properties {
   $ret;
 }
 
+sub ptr-mark ($rt) {
+  $rt.is-pointer ?? '*' !! ''
+}
+
 sub get-param-list ($mi) {
   return '' unless $mi.n-args;
 
   sub arg-str ($a) {
     #"{ $a.type.type-tag }{ $a.type.is-pointer ?? '*' !! '' }\t{ $a.name }";
-    "{ $a.type.tag }{ False ?? '*' !! '' }\t{ $a.name }";
+    "{ $a.type.tag-name }{ ptr-mark($a.type) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
 
-  "\t\t" ~ (
+  (" " x 25) ~ (
     gather for $mi.get-args[] {
       take arg-str($_)
     }
-  ).join(",\n\t\t")
+  ).join(",\n" ~ " " x 25)
 }
 
-sub ptr-mark ($rt) {
-  $rt.is-pointer ?? '*' !! ''
-}
-
-sub list-methods {
+sub list-callables ($retrieve, $num) {
   my $ret = '';
 
   class NoReturn {
     has $.name       = '';
     has $.is-pointer = False;
+    has $.tag        = GI_TYPE_TAG_VOID;
   }
 
-  if $*o.m-elems -> $nm {
+  if $num -> $nm {
     for ^$nm {
-      my $mi = $*o.get-method($_);
+      my $mi = $*o."$retrieve"($_);
       my $rt = $mi.return-type // NoReturn.new;
 
+      $ret ~= '  ';
       if $mi.n-args == 1 {
-        $ret ~= "{ $rt.name }{ ptr-mark($rt) } { $mi.name } ({
-                   get-param-list($mi) })\n";
+        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
+                     $mi.name } ({ get-param-list($mi) })\n\n";
         # $ret ~= "{ $rt.name }{ ptr-mark($rt) } {
         #       $mi.name } (\n{ '' })\n\n";=
       } elsif $mi.n-args {
-        $ret ~= "{ $rt.name }{ ptr-mark($rt) } { $mi.name } (\n{
-                   get-param-list($mi) }\n )\n";
+        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
+                     $mi.name } (\n{ get-param-list($mi) }\n{ ' ' x 23 })\n\n";
       } else {
-        $ret ~= "{ $rt.name }{ ptr-mark($rt) } { $mi.name } ()\n";
+        $ret ~= "{ ( $rt.tag-name ~ ' ' ~ ptr-mark($rt) ).fmt('%-20s') } {
+                     $mi.name } ()\n\n";
       }
     }
   }
   $ret;
+}
+
+sub list-methods {
+  list-callables('get-method', $*o.m-elems);
+}
+
+sub list-signals {
+  list-callables('get-signal', $*o.s-elems);
+}
+
+sub list-vfuncs {
+  list-callables('get-vfunc', $*o.v-elems);
 }
 
 sub MAIN (
@@ -141,10 +156,13 @@ sub MAIN (
     Requred interfaces: { $*o.i-elems }
 
     Methods: { $*o.m-elems }
-      { list-methods.chomp }
+    { list-methods.chomp }
 
-                 Signals: { $*o.s-elems }
-                 V-Funcs: { $*o.v-elems }
+    Signals: { $*o.s-elems }
+    { list-signals.chomp }
+
+    V-Funcs: { $*o.v-elems }
+    { list-vfuncs.chomp }
     OBJINFO
 
 }
