@@ -5,6 +5,7 @@ use Method::Also;
 use GIR::Raw::Types;
 
 use GIR::BaseInfo;
+use GIR::TypeInfo;
 
 our subset GIPropertyInfoAncestry is export of Mu
   where GIPropertyInfo | GIBaseInfo;
@@ -61,13 +62,18 @@ class GIR::PropertyInfo is GIR::BaseInfo {
     g_property_info_get_ownership_transfer($!pi);
   }
 
-  method get_type
+  method get_type (:$raw = False)
     is also<
       get-type
       type
     >
   {
-    g_property_info_get_type($!pi);
+    my $t = g_property_info_get_type($!pi);
+
+    $t ??
+      ( $raw ?? $t !! GIR::TypeInfo.new($t) )
+      !!
+      Nil
   }
 
 }
