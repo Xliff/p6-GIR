@@ -79,6 +79,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_constant (Int() $n, :$raw = False) is also<get-constant> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_constants - 1;
+
     my gint $nn = $n;
     my $c = g_interface_info_get_constant($!ii, $nn);
 
@@ -104,6 +107,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_method (Int() $n, :$raw = False) is also<get-method> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_methods - 1;
+
     my gint $nn = $n;
     my $m = g_interface_info_get_method($!ii, $nn);
 
@@ -186,6 +192,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_prerequisite (Int() $n, :$raw = False) is also<get-prerequisite> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_prerequisites - 1;
+
     my gint $nn = $n;
     my $b = g_interface_info_get_prerequisite($!ii, $nn);
 
@@ -196,6 +205,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_property (Int() $n, :$raw = False) is also<get-property> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_properties - 1;
+
     my gint $nn = $n;
     my $p = g_interface_info_get_property($!ii, $nn);
 
@@ -206,6 +218,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_signal (Int() $n, :$raw = False) is also<get-signal> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_signal - 1;
+
     my gint $nn = $n;
     my $s = g_interface_info_get_signal($!ii, $nn);
 
@@ -216,6 +231,9 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_vfunc (Int() $n, :$raw = False) is also<get-vfunc> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_vfuncs - 1;
+
     my gint $nn = $n;
     my $v = g_interface_info_get_vfunc($!ii, $nn);
 

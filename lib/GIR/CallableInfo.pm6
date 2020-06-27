@@ -52,8 +52,8 @@ class GIR::CallableInfo is GIR::BaseInfo {
   }
 
   method get_arg (Int() $n, :$raw = False) is also<get-arg> {
-    die "Index $n out of range in GIR::CallableInfo.get_arg"
-      if $n > self.n_args - 1;
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_args - 1;
 
     my gint $nn = $n;
     my $t = g_callable_info_get_arg($!ci, $nn);
@@ -209,6 +209,9 @@ class GIR::CallableInfo is GIR::BaseInfo {
   }
 
   method load_arg (Int() $n, GIArgInfo() $arg) is also<load-arg> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_args - 1;
+
     my gint $nn = $n;
 
     g_callable_info_load_arg($!ci, $nn, $arg);

@@ -139,6 +139,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_constant (Int() $n, :$raw = False) is also<get-constant> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_constants - 1;
+
     my gint $nn = $n;
     my $c = g_object_info_get_constant($!oi, $nn);
 
@@ -149,6 +152,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_field (Int() $n, :$raw = False) is also<get-field> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_fields - 1;
+
     my gint $nn = $n;
     my $f = g_object_info_get_field($!oi, $nn);
 
@@ -188,6 +194,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_interface (Int() $n, :$raw = False) is also<get-interface> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_interfaces - 1;
+
     my gint $nn = $n;
     my $i = g_object_info_get_interface($!oi, $nn);
 
@@ -198,6 +207,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_method (Int() $n, :$raw = False) is also<get-method> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_methods - 1;
+
     my gint $nn = $n;
     my $m = g_object_info_get_method($!oi, $nn);
 
@@ -306,6 +318,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_property (Int() $n, :$raw = False) is also<get-property> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_properties - 1;
+
     my gint $nn = $n;
     my $p = g_object_info_get_property($!oi, $nn);
 
@@ -356,6 +371,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_signal (Int() $n, :$raw = False) is also<get-signal> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_signals - 1;
+
     my gint $nn = $n;
     my $s = g_object_info_get_signal($!oi, $nn);
 
@@ -406,6 +424,9 @@ class GIR::ObjectInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_vfunc (Int() $n, :$raw = False) is also<get-vfunc> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_vfuncs - 1;
+
     my gint $nn = $n;
     my $v = g_object_info_get_vfunc($!oi, $nn);
 

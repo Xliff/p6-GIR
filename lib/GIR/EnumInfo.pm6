@@ -56,6 +56,9 @@ class GIR::EnumInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_method (Int() $n, :$raw = False) is also<get-method> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_methods - 1;
+
     my gint $nn = $n;
     my $fi = g_enum_info_get_method($!ei, $nn);
 
@@ -100,6 +103,9 @@ class GIR::EnumInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_value (Int() $n) is also<get-value> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_values - 1;
+
     my gint $nn = $n;
 
     g_enum_info_get_value($!ei, $n);

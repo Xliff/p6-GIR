@@ -103,6 +103,9 @@ class GIR::UnionInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_field (Int() $n, :$raw = False) is also<get-field> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_fields - 1;
+
     my gint $nn = $n;
     my $f = g_union_info_get_field($!ui, $nn);
 
@@ -113,6 +116,9 @@ class GIR::UnionInfo is GIR::RegisteredTypeInfo {
   }
 
   method get_method (Int() $n, :$raw = False) is also<get-method> {
+    die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+      if $n > self.get_n_methods - 1;
+
     my gint $nn = $n;
     my $m = g_union_info_get_method($!ui, $nn);
 

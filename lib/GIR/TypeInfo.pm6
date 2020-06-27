@@ -98,6 +98,11 @@ class GIR::TypeInfo is GIR::BaseInfo {
   }
 
   method get_param_type (Int() $n, :$raw = False) is also<get-param-type> {
+    # cw: Where is get_n_params?
+    #
+    # die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
+    #   if $n > self.get_n_params - 1;
+
     my gint $nn = $n;
     my $ti = g_type_info_get_param_type($!ti, $nn);
 
