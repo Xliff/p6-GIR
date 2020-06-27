@@ -60,6 +60,9 @@ class GIR::TypeInfo is GIR::BaseInfo {
 
     do given (g_type_tag_to_string($tt) // '') {
       when 'utf8'            { 'char' }
+
+      #when 'array'           { self.get_array_type }
+
       when none('interface') { $_     }
 
       default {
