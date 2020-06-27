@@ -7,6 +7,7 @@ use NativeCall;
 use GIR::Raw::Types;
 use GIR::Raw::CallableInfo;
 
+use GIR::ArgInfo;
 use GIR::BaseInfo;
 use GIR::TypeInfo;
 
@@ -50,10 +51,26 @@ class GIR::CallableInfo is GIR::BaseInfo {
     so g_callable_info_can_throw_gerror($!ci);
   }
 
-  method get_arg (Int() $n) is also<get-arg> {
-    my gint $nn = $n;
+  method get_arg (Int() $n, :$raw = False) is also<get-arg> {
+    die "Index $n out of range in GIR::CallableInfo.get_arg"
+      if $n > self.n_args - 1;
 
-    g_callable_info_get_arg($!ci, $nn);
+    my gint $nn = $n;
+    my $t = g_callable_info_get_arg($!ci, $nn);
+
+    $t ??
+      ( $raw ?? $t !! GIR::ArgInfo.new($t) )
+      !!
+      Nil;
+  }
+
+  method get_args (:$raw = False) is also<get-args> {
+    my @args;
+
+    for ^self.get_n_args {
+      @args.push: self.get_arg($_, :$raw);
+    }
+    @args;
   }
 
   method get_caller_owns is also<get-caller-owns> {
@@ -66,7 +83,15 @@ class GIR::CallableInfo is GIR::BaseInfo {
     GITransferEnum( g_callable_info_get_instance_ownership_transfer($!ci) );
   }
 
-  method get_n_args is also<get-n-args> {
+  method get_n_args
+    is also<
+      get-n-args
+      n_args
+      n-args
+      a_elems
+      a-elems
+    >
+  {
     g_callable_info_get_n_args($!ci);
   }
 
