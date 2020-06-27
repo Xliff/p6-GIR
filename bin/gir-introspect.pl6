@@ -79,6 +79,23 @@ sub get-param-list ($mi) {
   ).join(",\n" ~ " " x 25)
 }
 
+sub list-interfaces {
+  my $ret = '';
+
+  if $*o.i-elems -> $nf {
+    for ^$nf {
+      my $i = $*o.get-interface($_);
+      my $iname = $i.name;
+      my $prefix = $*repo.get-c-prefix($i.namespace);
+      $iname = $prefix ~ $iname if $prefix;
+
+      $ret ~= "  { $iname }\n"
+    }
+  }
+  $ret;
+}
+
+
 sub list-callables ($retrieve, $num) {
   my $ret = '';
 
@@ -126,18 +143,26 @@ sub list-vfuncs {
 }
 
 sub MAIN (
-  $typelib,     #= Typelib to load
-  $object       #= Object found within <typelib>
+  $typelib,      #= Typelib to load
+  $object,       #= Object found within <typelib>
+  :$all,         #= List everything
+  :$constants,   #= List constants
+  :$fields,      #= List fields
+  :$properties,  #= List properties
+  :$interfaces,  #= List interfaces
+  :$methods,     #= List methods
+  :$signals,     #= List signals
+  :$vfuncs       #= List vfuncs
 ) {
   # Exit upon ANY error.
   $ERROR-IS-FATAL = True;
 
-  my $repo = GIR::Repository.get-default;
-  my $t    = $repo.require($typelib);
-  my $bi   = $repo.find-by-name($typelib, $object);
+  my $*repo = GIR::Repository.get-default;
+  my $t    = $*repo.require($typelib);
+  my $bi   = $*repo.find-by-name($typelib, $object);
   my $gt   = GLib::Object::Type.from_name($object);
 
-  $bi = $repo.find-by-gtype($gt) unless $bi || $gt.not;
+  $bi = $*repo.find-by-gtype($gt) unless $bi || $gt.not;
 
   die "Could not find an object named '{ $object }'!" unless $bi;
 
@@ -145,35 +170,50 @@ sub MAIN (
     unless $bi.infotype == GI_INFO_TYPE_OBJECT;
 
   my $*o = GIR::ObjectInfo.new($bi.GIBaseInfo);
-
+  my $*p = $*repo.get-c-prefix($typelib);
   my $parent-name = $*o.parent ?? $*o.parent.name !! '';
+  my $parent-prefix = $*repo.get-c-prefix($*o.parent.namespace);
   $parent-name //= 'None';
+  $parent-name = $parent-prefix ~ $parent-name unless $parent-name eq 'None';
 
-  my $*p = $repo.get-c-prefix($typelib);
   say qq:to/OBJINFO/;
-    Prefix: { $*p }
 
     Object name: { $*o.type-name } --- Parent: { $parent-name }
-
-    Constants: { $*o.c-elems }
-    { list-constants.chomp }
-
-    Fields: { $*o.f-elems }
-    { list-fields.chomp }
-
-    Properties: { $*o.p-elems }
-    { list-properties.chomp }
-
-    Requred interfaces: { $*o.i-elems }
-
-    Methods: { $*o.m-elems }
-    { list-methods.chomp }
-
-    Signals: { $*o.s-elems }
-    { list-signals.chomp }
-
-    V-Funcs: { $*o.v-elems }
-    { list-vfuncs.chomp }
     OBJINFO
+
+  say qq:to/CONSTANTINFO/  if $all || $constants;
+    Constants: { $*o.c-elems }
+    { list-constants }
+    CONSTANTINFO
+
+  say qq:to/FIELDINFO/     if $all || $fields;
+    Fields: { $*o.f-elems }
+    { list-fields }
+    FIELDINFO
+
+  say qq:to/PROPINFO/      if $all || $properties;
+    Properties: { $*o.p-elems }
+    { list-properties }
+    PROPINFO
+
+  say qq:to/IFACEINFO/     if $all || $interfaces;
+    Requred interfaces: { $*o.i-elems }
+    { list-interfaces }
+    IFACEINFO
+
+  say qq:to/METHODINFO/    if $all || $methods;
+    Methods: { $*o.m-elems }
+    { list-methods }
+    METHODINFO
+
+  say qq:to/SIGINFO/       if $all || $signals;
+    Signals: { $*o.s-elems }
+    { list-signals }
+    SIGINFO
+
+  say qq:to/VFUNCINFO/     if $all || $vfuncs
+    V-Funcs: { $*o.v-elems }
+    { list-vfuncs }
+    VFUNCINFO
 
 }
