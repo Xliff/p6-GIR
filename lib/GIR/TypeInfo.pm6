@@ -49,7 +49,7 @@ class GIR::TypeInfo is GIR::BaseInfo {
   #   g_info_type_to_string($!ti);
   # }
   #
-  method tag_to_string ()
+  method tag_to_string (:$prefix = '')
     is also<
       tag-to-string
       tag_name
@@ -63,8 +63,9 @@ class GIR::TypeInfo is GIR::BaseInfo {
       when none('interface') { $_     }
 
       default {
-        # Last chance replacement, here.
-        $_;
+        die "Unknown type: '$_'!" unless $_ eq 'interface';
+
+        $prefix ~ self.get_interface.name;
       }
     }
   }
