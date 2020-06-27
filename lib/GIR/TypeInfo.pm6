@@ -49,9 +49,25 @@ class GIR::TypeInfo is GIR::BaseInfo {
   #   g_info_type_to_string($!ti);
   # }
   #
-  # method g_type_tag_to_string {
-  #   g_type_tag_to_string($!ti);
-  # }
+  method tag_to_string ()
+    is also<
+      tag-to-string
+      tag_name
+      tag-name
+    >
+  {
+    my GITypeTag $tt = self.get_tag;
+
+    do given (g_type_tag_to_string($tt) // '') {
+      when 'utf8'            { 'char' }
+      when none('interface') { $_     }
+
+      default {
+        # Last chance replacement, here.
+        $_;
+      }
+    }
+  }
 
   method get_array_fixed_size
     is also<
