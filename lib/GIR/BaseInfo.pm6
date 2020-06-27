@@ -83,13 +83,15 @@ class GIR::BaseInfo {
       Nil;
   }
 
-  method get_name
+  method get_name (:$prefix = '')
     is also<
       get-name
       name
     >
   {
-    g_base_info_get_name($!bi) // '';
+    my $n = g_base_info_get_name($!bi) // '';
+    $n = $prefix ~ $n if $n && $prefix;
+    $n;
   }
 
   method get_namespace
