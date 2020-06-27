@@ -11,7 +11,7 @@ use GIR::FunctionInfo;
 use GIR::SignalInfo;
 
 our subset GIVFuncInfoAncestry is export of Mu
-  where GISignalInfo | GICallableInfoAncestry;
+  where GIVFuncInfo | GICallableInfoAncestry;
 
 class GIR::VFuncInfo is GIR::CallableInfo {
   has GIVFuncInfo $!vi;
