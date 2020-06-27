@@ -89,7 +89,7 @@ class GIR::BaseInfo {
       name
     >
   {
-    g_base_info_get_name($!bi);
+    g_base_info_get_name($!bi) // '';
   }
 
   method get_namespace
@@ -98,7 +98,7 @@ class GIR::BaseInfo {
       namespace
     >
   {
-    g_base_info_get_namespace($!bi);
+    g_base_info_get_namespace($!bi) // '';
   }
 
   method get_infotype
