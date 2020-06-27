@@ -95,6 +95,7 @@ class GIR::ArgInfo is GIR::BaseInfo {
       get-type
       get_typeinfo
       get-typeinfo
+      type
       typeinfo
     >
   {
