@@ -50,8 +50,16 @@ sub list-properties {
   $ret;
 }
 
-sub ptr-mark ($rt) {
-  $rt.is-pointer ?? '*' !! ''
+multi sub ptr-mark(Bool $b) {
+  $b ?? '*' !! '';
+}
+multi sub ptr-mark(GIR::TypeInfo $t) {
+  ptr-mark($t.is-pointer);
+}
+multi sub ptr-mark (GIR::ArgInfo $a) {
+  my $ptr = ($a.direction == (GI_DIRECTION_OUT, GI_DIRECTION_INOUT).any).so;
+  return ptr-mark($a.type) unless $ptr;
+  ptr-mark($ptr);
 }
 
 sub get-param-list ($mi) {
@@ -59,7 +67,7 @@ sub get-param-list ($mi) {
 
   sub arg-str ($a) {
     #"{ $a.type.type-tag }{ $a.type.is-pointer ?? '*' !! '' }\t{ $a.name }";
-    "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a.type) } { $a.name }";
+    "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
