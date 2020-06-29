@@ -8,9 +8,9 @@ use GIR::ObjectInfo;
 
 sub list-constants {
   my $ret = '';
-  if $*o.c-elems -> $nc {
+  if $*item.c-elems -> $nc {
     for ^$nc {
-      my $ci = $*o.get-constant($_);
+      my $ci = $*item.get-constant($_);
       next unless $ci.name;
 
       # cw: Eventually shall add the value!
@@ -22,9 +22,9 @@ sub list-constants {
 
 sub list-fields {
   my $ret = '';
-  if $*o.f-elems -> $nf {
+  if $*item.f-elems -> $nf {
     for ^$nf {
-      my $fi = $*o.get-field($_);
+      my $fi = $*item.get-field($_);
       my $rw = '';
       $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
@@ -37,9 +37,9 @@ sub list-fields {
 
 sub list-properties {
   my $ret = '';
-  if $*o.p-elems -> $nf {
+  if $*item.p-elems -> $nf {
     for ^$nf {
-      my $fi = $*o.get-property($_);
+      my $fi = $*item.get-property($_);
       my $rw = '';
       $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
@@ -82,9 +82,9 @@ sub get-param-list ($mi) {
 sub list-interfaces {
   my $ret = '';
 
-  if $*o.i-elems -> $nf {
+  if $*item.i-elems -> $nf {
     for ^$nf {
-      my $i = $*o.get-interface($_);
+      my $i = $*item.get-interface($_);
       my $iname = $i.name;
       my $prefix = $*repo.get-c-prefix($i.namespace);
       $iname = $prefix ~ $iname if $prefix;
@@ -107,7 +107,7 @@ sub list-callables ($retrieve, $num) {
 
   if $num -> $nm {
     for ^$nm {
-      my $mi = $*o."$retrieve"($_);
+      my $mi = $*item."$retrieve"($_);
       my $rt = $mi.return-type // NoReturn.new;
 
       $ret ~= '  ';
@@ -131,20 +131,127 @@ sub list-callables ($retrieve, $num) {
 }
 
 sub list-methods {
-  list-callables('get-method', $*o.m-elems);
+  list-callables('get-method', $*item.m-elems);
 }
 
 sub list-signals {
-  list-callables('get-signal', $*o.s-elems);
+  list-callables('get-signal', $*item.s-elems);
 }
 
 sub list-vfuncs {
-  list-callables('get-vfunc', $*o.v-elems);
+  list-callables('get-vfunc', $*item.v-elems);
+}
+
+sub list-values {
+  my $ret = '';
+
+  if $*item.v-elems -> $nv {
+    my @values = gather for ^$nv {
+      take $*item.get-value($_);
+    }
+    my $mnl = @values.map( *.name.chars ).max;
+
+    for @values {
+      $ret ~= "  { .name.fmt("%-{ $mnl }s") } = { .value }\n";
+    }
+  }
+  $ret;
+}
+
+multi sub print-item-info (GI_INFO_TYPE_ENUM) {
+  $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
+
+  say qq:to/ENUMINFO/;
+
+    Enum name: { $*item.name }
+    ENUMINFO
+
+  say qq:to/VALUEINFO/;
+    Values: { $*item.v-elems }
+    { list-values }
+    VALUEINFO
+
+  say qq:to/METHODINFO/;
+    Methods: { $*item.m-elems }
+    { list-methods }
+    METHODINFO
+}
+multi sub print-item-info (GI_INFO_TYPE_OBJECT) {
+  $*item = GIR::ObjectInfo.new($*item.GIBaseInfo);
+
+  my $parent-name = $*item.parent ?? $*item.parent.name !! '';
+  my $parent-prefix = $*repo.get-c-prefix($*item.parent.namespace);
+  $parent-name //= 'None';
+  $parent-name = $parent-prefix ~ $parent-name unless $parent-name eq 'None';
+
+  say qq:to/OBJINFO/;
+
+    Object name: { $*item.type-name } --- Parent: { $parent-name }
+    OBJINFO
+
+  say qq:to/CONSTANTINFO/  if $*all || $*constants;
+    Constants: { $*item.c-elems }
+    { list-constants }
+    CONSTANTINFO
+
+  say qq:to/FIELDINFO/     if $*all || $*fields;
+    Fields: { $*item.f-elems }
+    { list-fields }
+    FIELDINFO
+
+  say qq:to/PROPINFO/      if $*all || $*properties;
+    Properties: { $*item.p-elems }
+    { list-properties }
+    PROPINFO
+
+  say qq:to/IFACEINFO/     if $*all || $*interfaces;
+    Requred interfaces: { $*item.i-elems }
+    { list-interfaces }
+    IFACEINFO
+
+  say qq:to/METHODINFO/    if $*all || $*methods;
+    Methods: { $*item.m-elems }
+    { list-methods }
+    METHODINFO
+
+  say qq:to/SIGINFO/       if $*all || $*signals;
+    Signals: { $*item.s-elems }
+    { list-signals }
+    SIGINFO
+
+  say qq:to/VFUNCINFO/     if $*all || $*vfuncs
+    V-Funcs: { $*item.v-elems }
+    { list-vfuncs }
+    VFUNCINFO
+}
+
+multi sub print-item-info ($a) {
+  say "Type '$a' NYI";
+}
+
+sub print-all-items {
+  my $ni = $*repo.get-n-infos($*namespace);
+  say qq:to/INFO/;
+
+  Prefix: { $*p }
+  Number of Infos: { $ni }
+  INFO
+
+  my @infos = gather for ^$ni {
+    take $*repo.get-info($*namespace, $_);
+  };
+  my $lin = @infos.map( *.name.chars ).max;
+
+  for @infos {
+    say "  { .name.fmt("%-{ $lin }s") } -- { .infotype }"
+  }
+
+  exit 0;
 }
 
 sub MAIN (
   $typelib,      #= Typelib to load
-  $object,       #= Object found within <typelib>
+  $object?,       #= Object found within <typelib>
   :$all,         #= List everything
   :$constants,   #= List constants
   :$fields,      #= List fields
@@ -152,68 +259,39 @@ sub MAIN (
   :$interfaces,  #= List interfaces
   :$methods,     #= List methods
   :$signals,     #= List signals
+  :$values,      #= List values
   :$vfuncs       #= List vfuncs
 ) {
-  # Exit upon ANY error.
+  # Exit upon ANY GError.
   $ERROR-IS-FATAL = True;
 
   my $*repo = GIR::Repository.get-default;
-  my $t    = $*repo.require($typelib);
-  my $bi   = $*repo.find-by-name($typelib, $object);
-  my $gt   = GLib::Object::Type.from_name($object);
+  my $t     = $*repo.require($typelib);
+  my $*p    = $*repo.get-c-prefix($typelib);
 
-  $bi = $*repo.find-by-gtype($gt) unless $bi || $gt.not;
+  my $*namespace  = $typelib;
+  my $*all        = $all;
+  my $*constants  = $constants;
+  my $*fields     = $fields;
+  my $*properties = $properties;
+  my $*interfaces = $interfaces;
+  my $*methods    = $methods;
+  my $*signals    = $signals;
+  my $*values     = $values;
+  my $*vfuncs     = $vfuncs;
 
-  die "Could not find an object named '{ $object }'!" unless $bi;
+  unless $*all || $object {
+    say '--object or --all missing!';
+    exit 1;
+  }
 
-  die "'$object' is not a GObject!"
-    unless $bi.infotype == GI_INFO_TYPE_OBJECT;
+  print-all-items if $*all && $object.not;
 
-  my $*o = GIR::ObjectInfo.new($bi.GIBaseInfo);
-  my $*p = $*repo.get-c-prefix($typelib);
-  my $parent-name = $*o.parent ?? $*o.parent.name !! '';
-  my $parent-prefix = $*repo.get-c-prefix($*o.parent.namespace);
-  $parent-name //= 'None';
-  $parent-name = $parent-prefix ~ $parent-name unless $parent-name eq 'None';
+  my $*item = $*repo.find-by-name($typelib, $object);
+  die "Could not find an object named '{ $object }'!" unless $*item;
 
-  say qq:to/OBJINFO/;
+  die "Do not know how to handle '$object'. Type unknown!"
+    if $*item.infotype == GI_INFO_TYPE_UNRESOLVED;
 
-    Object name: { $*o.type-name } --- Parent: { $parent-name }
-    OBJINFO
-
-  say qq:to/CONSTANTINFO/  if $all || $constants;
-    Constants: { $*o.c-elems }
-    { list-constants }
-    CONSTANTINFO
-
-  say qq:to/FIELDINFO/     if $all || $fields;
-    Fields: { $*o.f-elems }
-    { list-fields }
-    FIELDINFO
-
-  say qq:to/PROPINFO/      if $all || $properties;
-    Properties: { $*o.p-elems }
-    { list-properties }
-    PROPINFO
-
-  say qq:to/IFACEINFO/     if $all || $interfaces;
-    Requred interfaces: { $*o.i-elems }
-    { list-interfaces }
-    IFACEINFO
-
-  say qq:to/METHODINFO/    if $all || $methods;
-    Methods: { $*o.m-elems }
-    { list-methods }
-    METHODINFO
-
-  say qq:to/SIGINFO/       if $all || $signals;
-    Signals: { $*o.s-elems }
-    { list-signals }
-    SIGINFO
-
-  say qq:to/VFUNCINFO/     if $all || $vfuncs
-    V-Funcs: { $*o.v-elems }
-    { list-vfuncs }
-    VFUNCINFO
-
+  print-item-info($*item.infotype);
 }
