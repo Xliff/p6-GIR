@@ -7,6 +7,7 @@ use GIR::Raw::EnumInfo;
 
 use GIR::RegisteredTypeInfo;
 use GIR::FunctionInfo;
+use GIR::ValueInfo;
 
 our subset GIEnumInfoAncestry is export of Mu
   where GIEnumInfo | GIRegisteredTypeInfoAncestry;
@@ -29,7 +30,7 @@ class GIR::EnumInfo is GIR::RegisteredTypeInfo {
 
       default {
         $to-parent = $_;
-        cast(GIRegisteredTypeInfo, $_);
+        cast(GIEnumInfo, $_);
       }
     }
 
@@ -102,13 +103,17 @@ class GIR::EnumInfo is GIR::RegisteredTypeInfo {
     GITypeTagEnum( g_enum_info_get_storage_type($!ei) );
   }
 
-  method get_value (Int() $n) is also<get-value> {
+  method get_value (Int() $n, :$raw = False) is also<get-value> {
     die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
       if $n > self.get_n_values - 1;
 
     my gint $nn = $n;
+    my $v = g_enum_info_get_value($!ei, $n);
 
-    g_enum_info_get_value($!ei, $n);
+    $v ??
+      ( $raw ?? $v !! GIR::ValueInfo.new($v) )
+      !!
+      Nil
   }
 
 }
