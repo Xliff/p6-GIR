@@ -95,37 +95,41 @@ sub list-interfaces {
   $ret;
 }
 
-
-sub list-callables ($retrieve, $num) {
-  my $ret = '';
-
+sub list-args ($mi, :$prefix = '') {
   class NoReturn {
     has $.name       = '';
     has $.is-pointer = False;
     has $.tag        = GI_TYPE_TAG_VOID;
   }
 
-  if $num -> $nm {
-    for ^$nm {
-      my $mi = $*item."$retrieve"($_);
-      my $rt = $mi.return-type // NoReturn.new;
+  my $rt = $mi.return-type // NoReturn.new;
+  my $ret = '';
+  my $name = $mi.name;
+  $name = "{ $prefix }_{ $name }" if $prefix;
 
-      $ret ~= '  ';
-      if $mi.n-args == 1 {
-        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
-                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } ({
-                   get-param-list($mi) })\n\n";
-        # $ret ~= "{ $rt.name }{ ptr-mark($rt) } {
-        #       $mi.name } (\n{ '' })\n\n";=
-      } elsif $mi.n-args {
-        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
-                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } (\n{
-                   get-param-list($mi) }\n{ ' ' x 23 })\n\n";
-      } else {
-        $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
-                     ptr-mark($rt) ).fmt('%-20s') } { $mi.name } ()\n\n";
-      }
-    }
+  $ret ~= '  ';
+  if $mi.n-args == 1 {
+    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                 ptr-mark($rt) ).fmt('%-20s') } { $name } ({
+               get-param-list($mi) })\n\n";
+    # $ret ~= "{ $rt.name }{ ptr-mark($rt) } {
+    #       $mi.name } (\n{ '' })\n\n";=
+  } elsif $mi.n-args {
+    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                 ptr-mark($rt) ).fmt('%-20s') } { $name } (\n{
+               get-param-list($mi) }\n{ ' ' x 23 })\n\n";
+  } else {
+    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+                 ptr-mark($rt) ).fmt('%-20s') } { $name } ()\n\n";
+  }
+  $ret;
+}
+
+sub list-callables ($retrieve, $num) {
+  my $ret = '';
+
+  if $num -> $nm {
+    $ret ~= list-args( $*item."$retrieve"($_) ) for ^$nm;
   }
   $ret;
 }
@@ -158,6 +162,15 @@ sub list-values {
   $ret;
 }
 
+multi sub print-item-info (GI_INFO_TYPE_FUNCTION) {
+  $*item = GIR::FunctionInfo.new($*item.GIBaseInfo);
+
+
+  say qq:to/FUNCINFO/;
+
+  { list-args( $*item, prefix => $*p.lc ) }
+  FUNCINFO
+}
 multi sub print-item-info (GI_INFO_TYPE_ENUM) {
   $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
 
