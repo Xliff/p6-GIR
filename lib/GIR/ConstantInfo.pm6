@@ -53,7 +53,12 @@ class GIR::ConstantInfo is GIR::BaseInfo {
     g_constant_info_free_value($!ci, $value);
   }
 
-  method get_type (:$raw = False) is also<get-type> {
+  method get_type (:$raw = False)
+    is also<
+      get-type
+      type
+    >
+  {
     my $t = g_constant_info_get_type($!ci);
 
     $t ??
@@ -66,11 +71,11 @@ class GIR::ConstantInfo is GIR::BaseInfo {
     is also<get-value>
   { * }
 
-  multi method get_value  {
-    my $v  = GIArgument.new;
+  multi method get_value is also<value> {
+    my $a = GIArgument.new;
+    my $s = samewith($a);
 
-    samewith($v);
-    $v;
+    ($s, $a);
   }
   multi method get_value (GIArgument $value) {
     g_constant_info_get_value($!ci, $value);
