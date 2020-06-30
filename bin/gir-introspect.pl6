@@ -6,6 +6,15 @@ use GLib::Object::Type;
 use GIR::Repository;
 use GIR::ObjectInfo;
 
+sub list-constant ($ci) {
+  my ($s, $t) = $ci.value;
+
+  # A bit of a problem getting the proper element from GIArgument, yes?
+  #
+  # "  { $ci.name } = { $t.v_string } ({ $s } / { $ci.type.infotype.Int })\n"
+  "  { $ci.name } (size { $s })\n"
+}
+
 sub list-constants {
   my $ret = '';
   if $*item.c-elems -> $nc {
@@ -13,8 +22,7 @@ sub list-constants {
       my $ci = $*item.get-constant($_);
       next unless $ci.name;
 
-      # cw: Eventually shall add the value!
-      $ret ~= "  { $ci.type.name } { $ci.name }\n"
+      $ret ~= list-constant($ci);
     }
   }
   $ret;
@@ -162,9 +170,16 @@ sub list-values {
   $ret;
 }
 
+multi sub print-item-info (GI_INFO_TYPE_CONSTANT) {
+  $*item = GIR::ConstantInfo.new($*item.GIBaseInfo);
+
+  say qq:to/CONSTINFO/;
+
+  { list-constant($*item) }
+  CONSTINFO
+}
 multi sub print-item-info (GI_INFO_TYPE_FUNCTION) {
   $*item = GIR::FunctionInfo.new($*item.GIBaseInfo);
-
 
   say qq:to/FUNCINFO/;
 
@@ -184,7 +199,7 @@ multi sub print-item-info (GI_INFO_TYPE_ENUM) {
     { list-values }
     VALUEINFO
 
-  say qq:to/METHODINFO/;
+  say qq:to/METHODINFO/    if $*all || $*methods;
     Methods: { $*item.m-elems }
     { list-methods }
     METHODINFO
@@ -264,7 +279,7 @@ sub print-all-items {
 
 sub MAIN (
   $typelib,      #= Typelib to load
-  $object?,       #= Object found within <typelib>
+  $object?,      #= Object found within <typelib>
   :$all,         #= List everything
   :$constants,   #= List constants
   :$fields,      #= List fields
