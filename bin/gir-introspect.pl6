@@ -35,6 +35,7 @@ multi sub ptr-mark(GIR::TypeInfo $t) {
 }
 multi sub ptr-mark (GIR::ArgInfo $a) {
   my $ptr = ($a.direction == (GI_DIRECTION_OUT, GI_DIRECTION_INOUT).any).so;
+
   return ptr-mark($a.type) unless $ptr;
   ptr-mark($ptr);
 }
@@ -51,6 +52,7 @@ sub list-fields {
         type-name  => ($f.type.tag-name( prefix => $*p ) // '') ~
                        ptr-mark($f.type)
       };
+
       $fmax = ($fmax, $v<field-name>.chars).max;
       $tmax = ($tmax, $v<type-name>.chars).max;
       take $v;
@@ -58,9 +60,9 @@ sub list-fields {
 
     for @f {
       my $rw = '';
+
       $rw ~= 'R' if .<flags> +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if .<flags> +& GI_FIELD_IS_WRITABLE;
-
       $ret ~= "  {  .<type-name>.fmt("%-{ $tmax }s") } {
                    .<field-name>.fmt("%-{ $fmax}s") } ({ $rw })\n";
     }
@@ -74,9 +76,9 @@ sub list-properties {
     for ^$nf {
       my $fi = $*item.get-property($_);
       my $rw = '';
+
       $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
-
       $ret ~= "  { $fi.type.name // '' } { $fi.name } ({ $rw })\n";
     }
   }
@@ -108,8 +110,8 @@ sub list-interfaces {
       my $i = $*item.get-interface($_);
       my $iname = $i.name;
       my $prefix = $*repo.get-c-prefix($i.namespace);
-      $iname = $prefix ~ $iname if $prefix;
 
+      $iname = $prefix ~ $iname if $prefix;
       $ret ~= "  { $iname }\n"
     }
   }
@@ -126,8 +128,8 @@ sub list-args ($mi, :$prefix = '') {
   my $rt = $mi.return-type // NoReturn.new;
   my $ret = '';
   my $name = $mi.name;
-  $name = "{ $prefix }_{ $name }" if $prefix;
 
+  $name = "{ $prefix }_{ $name }" if $prefix;
   $ret ~= '  ';
   if $mi.n-args == 1 {
     $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
@@ -144,17 +146,19 @@ sub list-args ($mi, :$prefix = '') {
   $ret;
 }
 
-sub list-callables ($retrieve, $num) {
+sub list-callables ($retrieve, $num, :$prefix = '') {
   my $ret = '';
 
   if $num -> $nm {
-    $ret ~= list-args( $*item."$retrieve"($_) ) for ^$nm;
+    $ret ~= list-args($*item."$retrieve"($_), :$prefix) for ^$nm;
   }
   $ret;
 }
 
 sub list-methods {
-  list-callables('get-method', $*item.m-elems);
+  my $prefix = $*p.lc ~ '_' ~ $*item.name.lc;
+
+  list-callables('get-method',  $*item.m-elems, :$prefix);
 }
 
 sub list-signals {
@@ -193,6 +197,7 @@ multi sub print-item-info (
   $a where * == GI_INFO_TYPE_FUNCTION | GI_INFO_TYPE_CALLBACK
 ) {
   my $prefix;
+
   $*item = GIR::FunctionInfo.new($*item.GIBaseInfo);
   $prefix = $*p.lc if $a == GI_INFO_TYPE_FUNCTION;
 
@@ -205,7 +210,7 @@ multi sub print-item-info (
   $a where * == GI_INFO_TYPE_STRUCT | GI_INFO_TYPE_UNION
 ) {
   my $typename;
-  ($*item, $typename) = do {
+  ($typename, $*item) = do {
     when $a == GI_INFO_TYPE_STRUCT {
       ( 'Struct', GIR::StructInfo.new($*item.GIBaseInfo) )
     }
@@ -234,8 +239,9 @@ multi sub print-item-info (
 multi sub print-item-info (
   $a where * == GI_INFO_TYPE_ENUM | GI_INFO_TYPE_FLAGS
 ) {
-  $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
   my $typename = $a == GI_INFO_TYPE_ENUM ?? 'Enum' !! 'Flags';
+
+  $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
 
   say qq:to/ENUMINFO/;
 
@@ -256,7 +262,7 @@ multi sub print-item-info (
   $a where * == GI_INFO_TYPE_OBJECT | GI_INFO_TYPE_INTERFACE
 ) {
   my $typename;
-  ($*item, $typename) = do {
+  ($typename, $*item) = do {
     when $a == GI_INFO_TYPE_OBJECT {
       ( 'Object', GIR::ObjectInfo.new($*item.GIBaseInfo) )
     }
@@ -318,6 +324,7 @@ multi sub print-item-info ($a) {
 
 sub print-all-items {
   my $ni = $*repo.get-n-infos($*namespace);
+
   say qq:to/INFO/;
 
   Prefix: { $*p }
@@ -360,7 +367,7 @@ sub MAIN (
   my $*repo = GIR::Repository.get-default;
   my $t     = $*repo.require($typelib);
   my $*p    = $*repo.get-c-prefix($typelib);
-
+  
   my $*namespace  = $typelib;
   my $*all        = $all;
   my $*constants  = $constants;
