@@ -73,9 +73,11 @@ class GIR::ConstantInfo is GIR::BaseInfo {
 
   multi method get_value is also<value> {
     my $a = GIArgument.new;
-    my $s = samewith($a);
+    samewith($a);
 
-    ($s, $a);
+    my $v = $a.value(self.type.tag);
+    self.free-value($a);
+    $v;
   }
   multi method get_value (GIArgument $value) {
     g_constant_info_get_value($!ci, $value);
