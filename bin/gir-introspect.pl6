@@ -367,7 +367,7 @@ sub MAIN (
   my $*repo = GIR::Repository.get-default;
   my $t     = $*repo.require($typelib);
   my $*p    = $*repo.get-c-prefix($typelib);
-  
+
   my $*namespace  = $typelib;
   my $*all        = $all;
   my $*constants  = $constants;
@@ -385,6 +385,8 @@ sub MAIN (
     say '--object or --all missing!';
     exit 1;
   }
+
+  $object.substr-rw(0, $*p.chars) = '' if $object.substr-eq($*p | $*p.lc, 0);
 
   sub checkInclusiveType ($t) {
     unless $t eq GIInfoTypeEnum.enums.keys.any {
