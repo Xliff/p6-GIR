@@ -27,16 +27,38 @@ sub list-constants {
   $ret;
 }
 
+multi sub ptr-mark(Bool $b) {
+  $b ?? ' *' !! '';
+}
+multi sub ptr-mark(GIR::TypeInfo $t) {
+  ptr-mark($t.is-pointer);
+}
+multi sub ptr-mark (GIR::ArgInfo $a) {
+  my $ptr = ($a.direction == (GI_DIRECTION_OUT, GI_DIRECTION_INOUT).any).so;
+  return ptr-mark($a.type) unless $ptr;
+  ptr-mark($ptr);
+}
+
 sub list-fields {
   my $ret = '';
   if $*item.f-elems -> $nf {
-    for ^$nf {
-      my $fi = $*item.get-field($_);
+    my @f = do gather for ^$nf {
+      my $f = $*item.get-field($_);
+      take {
+        field     => $f,
+        type-name => ($f.type.tag-to-string( prefix => $*p ) // '') ~
+                     ptr-mark($f.type)
+      }
+    }
+    my $max = @f.map( *<type-name>.chars ).max;
+
+    for @f {
+      my $fi = .<field>;
       my $rw = '';
       $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
 
-      $ret ~= "  { $fi.type.name // '' } { $fi.name } ({ $rw })\n";
+      $ret ~= "  { .<type-name>.fmt("%-{ $max }s") } { $fi.name } ({ $rw })\n";
     }
   }
   $ret;
@@ -55,18 +77,6 @@ sub list-properties {
     }
   }
   $ret;
-}
-
-multi sub ptr-mark(Bool $b) {
-  $b ?? '*' !! '';
-}
-multi sub ptr-mark(GIR::TypeInfo $t) {
-  ptr-mark($t.is-pointer);
-}
-multi sub ptr-mark (GIR::ArgInfo $a) {
-  my $ptr = ($a.direction == (GI_DIRECTION_OUT, GI_DIRECTION_INOUT).any).so;
-  return ptr-mark($a.type) unless $ptr;
-  ptr-mark($ptr);
 }
 
 sub get-param-list ($mi) {
@@ -184,6 +194,25 @@ multi sub print-item-info (GI_INFO_TYPE_FUNCTION) {
 
   { list-args( $*item, prefix => $*p.lc ) }
   FUNCINFO
+}
+multi sub print-item-info (GI_INFO_TYPE_STRUCT) {
+  $*item = GIR::StructInfo.new($*item.GIBaseInfo);
+
+  say qq:to/STRUCTINFO/;
+
+    Struct name: { $*p ~ $*item.name } -- Size: { $*item.size } bytes
+    Registered:  { $*item.is-gtype ?? 'Yes' !! 'No' }
+    STRUCTINFO
+
+  say qq:to/FIELDINFO/     if $*all || $*fields;
+    Fields: { $*item.f-elems }
+    { list-fields }
+    FIELDINFO
+
+  say qq:to/METHODINFO/    if $*all || $*methods;
+    Methods: { $*item.m-elems }
+    { list-methods }
+    METHODINFO
 }
 multi sub print-item-info (GI_INFO_TYPE_ENUM) {
   $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
