@@ -42,23 +42,27 @@ multi sub ptr-mark (GIR::ArgInfo $a) {
 sub list-fields {
   my $ret = '';
   if $*item.f-elems -> $nf {
+    my ($tmax, $fmax) = 0 xx 2;
     my @f = do gather for ^$nf {
       my $f = $*item.get-field($_);
-      take {
-        field     => $f,
-        type-name => ($f.type.tag-to-string( prefix => $*p ) // '') ~
-                     ptr-mark($f.type)
-      }
+      my $v = {
+        flags      => $f.flags,
+        field-name => $f.name,
+        type-name  => ($f.type.tag-name( prefix => $*p ) // '') ~
+                       ptr-mark($f.type)
+      };
+      $fmax = ($fmax, $v<field-name>.chars).max;
+      $tmax = ($tmax, $v<type-name>.chars).max;
+      take $v;
     }
-    my $max = @f.map( *<type-name>.chars ).max;
 
     for @f {
-      my $fi = .<field>;
       my $rw = '';
-      $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
-      $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
+      $rw ~= 'R' if .<flags> +& GI_FIELD_IS_READABLE;
+      $rw ~= 'W' if .<flags> +& GI_FIELD_IS_WRITABLE;
 
-      $ret ~= "  { .<type-name>.fmt("%-{ $max }s") } { $fi.name } ({ $rw })\n";
+      $ret ~= "  {  .<type-name>.fmt("%-{ $tmax }s") } {
+                   .<field-name>.fmt("%-{ $fmax}s") } ({ $rw })\n";
     }
   }
   $ret;
@@ -126,17 +130,15 @@ sub list-args ($mi, :$prefix = '') {
 
   $ret ~= '  ';
   if $mi.n-args == 1 {
-    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
                  ptr-mark($rt) ).fmt('%-20s') } { $name } ({
                get-param-list($mi) })\n\n";
-    # $ret ~= "{ $rt.name }{ ptr-mark($rt) } {
-    #       $mi.name } (\n{ '' })\n\n";=
   } elsif $mi.n-args {
-    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
                  ptr-mark($rt) ).fmt('%-20s') } { $name } (\n{
                get-param-list($mi) }\n{ ' ' x 23 })\n\n";
   } else {
-    $ret ~= "{ ( $rt.tag-name( :prefix($*p) ) ~ ' ' ~
+    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
                  ptr-mark($rt) ).fmt('%-20s') } { $name } ()\n\n";
   }
   $ret;
@@ -299,6 +301,9 @@ sub print-all-items {
   my $lin = @infos.map( *.name.chars ).max;
 
   for @infos {
+    if $*include.elems {
+      next unless .infotype == $*include.any;
+    }
     say "  { .name.fmt("%-{ $lin }s") } -- { .infotype }"
   }
 
@@ -306,17 +311,19 @@ sub print-all-items {
 }
 
 sub MAIN (
-  $typelib,      #= Typelib to load
-  $object?,      #= Object found within <typelib>
-  :$all,         #= List everything
-  :$constants,   #= List constants
-  :$fields,      #= List fields
-  :$properties,  #= List properties
-  :$interfaces,  #= List interfaces
-  :$methods,     #= List methods
-  :$signals,     #= List signals
-  :$values,      #= List values
-  :$vfuncs       #= List vfuncs
+  $typelib,            #= Typelib to load
+  $object?,            #= Object found withininclude>
+  :$exclude = (),      #= Comma separated list of types to exclude (takes priority over items listed in --include)
+  :$include = (),      #= Comma separated list of types to show
+  :$all,               #= List everything
+  :$constants,         #= List constants
+  :$fields,            #= List fields
+  :$properties,        #= List properties
+  :$interfaces,        #= List interfaces
+  :$methods,           #= List methods
+  :$signals,           #= List signals
+  :$values,            #= List values
+  :$vfuncs             #= List vfuncs
 ) {
   # Exit upon ANY GError.
   $ERROR-IS-FATAL = True;
@@ -335,11 +342,26 @@ sub MAIN (
   my $*signals    = $signals;
   my $*values     = $values;
   my $*vfuncs     = $vfuncs;
+  my $*exclude    = $exclude.split(/',' \s+/).grep( *.so );
+  my $*include    = $include.split(/',' \s+/).grep( *.so );
 
   unless $*all || $object {
     say '--object or --all missing!';
     exit 1;
   }
+
+  sub checkInclusiveType ($t) {
+    unless $t eq GIInfoTypeEnum.enums.keys.any {
+      say "Invalid type detected: { $t }!";
+      exit 1;
+    }
+    GIInfoTypeEnum.enums{$t};
+  }
+
+  for $*include, $*exclude {
+    $_ .= map({ checkInclusiveType($_) }) if .elems;
+  }
+  $*include.grep( *.Int != $*exclude.enums.values.any ) if $*exclude;
 
   print-all-items if $*all && $object.not;
 
