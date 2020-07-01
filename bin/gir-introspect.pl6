@@ -7,12 +7,11 @@ use GIR::Repository;
 use GIR::ObjectInfo;
 
 sub list-constant ($ci) {
-  my ($s, $t) = $ci.value;
+  my $val = $ci.value;
+  my $tn = $ci.type.tag-name;
 
-  # A bit of a problem getting the proper element from GIArgument, yes?
-  #
-  # "  { $ci.name } = { $t.v_string } ({ $s } / { $ci.type.infotype.Int })\n"
-  "  { $ci.name } (size { $s })\n"
+  $val = "'{ $val }'" if $tn = 'char';
+  "  { $ci.name } = { $val } ({ $*p.lc ~ $tn })\n";
 }
 
 sub list-constants {
