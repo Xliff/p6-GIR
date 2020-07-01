@@ -54,7 +54,7 @@ class GIR::FieldInfo is GIR::BaseInfo {
       flags
     >
   {
-    GIFieldInfoFlagsEnum( g_field_info_get_flags($!fi) );
+    g_field_info_get_flags($!fi);
   }
 
   method get_offset
