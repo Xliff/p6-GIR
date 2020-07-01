@@ -6,6 +6,7 @@ use GIR::Raw::Types;
 use GIR::Raw::StructInfo;
 
 use GIR::FieldInfo;
+use GIR::FunctionInfo;
 use GIR::RegisteredTypeInfo;
 
 our subset GIStructInfoAncestry is export of Mu
@@ -87,7 +88,7 @@ class GIR::StructInfo is GIR::RegisteredTypeInfo {
     my $m = g_struct_info_get_method($!si, $nn);
 
     $m ??
-      ( $raw ?? $m !! GIR::FunctionInfo($m) )
+      ( $raw ?? $m !! GIR::FunctionInfo.new($m) )
       !!
       Nil;
   }
