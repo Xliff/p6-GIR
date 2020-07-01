@@ -29,7 +29,7 @@ class GIR::StructInfo is GIR::RegisteredTypeInfo {
 
       default {
         $to-parent = $_;
-        cast(GIRegisteredTypeInfo, $_);
+        cast(GIStructInfo, $_);
       }
     }
 
@@ -82,7 +82,7 @@ class GIR::StructInfo is GIR::RegisteredTypeInfo {
   method get_method (Int() $n, :$raw = False) is also<get-method> {
     die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
       if $n > self.get_n_methods - 1;
-      
+
     my gint $nn = $n;
     my $m = g_struct_info_get_method($!si, $nn);
 
@@ -129,7 +129,13 @@ class GIR::StructInfo is GIR::RegisteredTypeInfo {
     so g_struct_info_is_foreign($!si);
   }
 
-  method is_gtype_struct is also<is-gtype-struct> {
+  method is_gtype_struct
+    is also<
+      is-gtype-struct
+      is_gtype
+      is-gtype
+    >
+  {
     so g_struct_info_is_gtype_struct($!si);
   }
 }
