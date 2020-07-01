@@ -189,21 +189,36 @@ multi sub print-item-info (GI_INFO_TYPE_CONSTANT) {
   { list-constant($*item) }
   CONSTINFO
 }
-multi sub print-item-info (GI_INFO_TYPE_FUNCTION) {
+multi sub print-item-info (
+  $a where * == GI_INFO_TYPE_FUNCTION | GI_INFO_TYPE_CALLBACK
+) {
+  my $prefix;
   $*item = GIR::FunctionInfo.new($*item.GIBaseInfo);
+  $prefix = $*p.lc if $a == GI_INFO_TYPE_FUNCTION;
 
   say qq:to/FUNCINFO/;
 
-  { list-args( $*item, prefix => $*p.lc ) }
+  { list-args( $*item, :$prefix ) }
   FUNCINFO
 }
-multi sub print-item-info (GI_INFO_TYPE_STRUCT) {
-  $*item = GIR::StructInfo.new($*item.GIBaseInfo);
+multi sub print-item-info (
+  $a where * == GI_INFO_TYPE_STRUCT | GI_INFO_TYPE_UNION
+) {
+  my $typename;
+  ($*item, $typename) = do {
+    when $a == GI_INFO_TYPE_STRUCT {
+      ( 'Struct', GIR::StructInfo.new($*item.GIBaseInfo) )
+    }
+
+    default {
+      ( 'Union', GIR::UnionInfo.new($*item.GIBaseInfo) )
+    }
+  }
 
   say qq:to/STRUCTINFO/;
 
-    Struct name: { $*p ~ $*item.name } -- Size: { $*item.size } bytes
-    Registered:  { $*item.is-gtype ?? 'Yes' !! 'No' }
+    { $typename } name: { $*p ~ $*item.name } -- Size: { $*item.size } bytes
+    Registered: { $*item.is-gtype ?? 'Yes' !! 'No' }
     STRUCTINFO
 
   say qq:to/FIELDINFO/     if $*all || $*fields;
@@ -216,12 +231,15 @@ multi sub print-item-info (GI_INFO_TYPE_STRUCT) {
     { list-methods }
     METHODINFO
 }
-multi sub print-item-info (GI_INFO_TYPE_ENUM) {
+multi sub print-item-info (
+  $a where * == GI_INFO_TYPE_ENUM | GI_INFO_TYPE_FLAGS
+) {
   $*item = GIR::EnumInfo.new($*item.GIBaseInfo);
+  my $typename = $a == GI_INFO_TYPE_ENUM ?? 'Enum' !! 'Flags';
 
   say qq:to/ENUMINFO/;
 
-    Enum name: { $*item.name }
+    { $typename } name: { $*item.name }
     ENUMINFO
 
   say qq:to/VALUEINFO/;
@@ -234,8 +252,19 @@ multi sub print-item-info (GI_INFO_TYPE_ENUM) {
     { list-methods }
     METHODINFO
 }
-multi sub print-item-info (GI_INFO_TYPE_OBJECT) {
-  $*item = GIR::ObjectInfo.new($*item.GIBaseInfo);
+multi sub print-item-info (
+  $a where * == GI_INFO_TYPE_OBJECT | GI_INFO_TYPE_INTERFACE
+) {
+  my $typename;
+  ($*item, $typename) = do {
+    when $a == GI_INFO_TYPE_OBJECT {
+      ( 'Object', GIR::ObjectInfo.new($*item.GIBaseInfo) )
+    }
+
+    default {
+      ( 'Interface', GIR::InterfaceInfo.new($*item.GIBaseInfo) )
+    }
+  }
 
   my $parent-name = $*item.parent ?? $*item.parent.name !! '';
   my $parent-prefix = $*repo.get-c-prefix($*item.parent.namespace);
@@ -244,7 +273,7 @@ multi sub print-item-info (GI_INFO_TYPE_OBJECT) {
 
   say qq:to/OBJINFO/;
 
-    Object name: { $*item.type-name } --- Parent: { $parent-name }
+    { $typename } name: { $*item.type-name } --- Parent: { $parent-name }
     OBJINFO
 
   say qq:to/CONSTANTINFO/  if $*all || $*constants;
