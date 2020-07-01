@@ -61,6 +61,37 @@ class GIArgument is repr<CUnion> does GLib::Roles::Pointers is export {
   has gsize    $.v_size;
   has Str      $.v_string;
   has gpointer $.v_pointer;
+
+  method value(Int() $tag) {
+    # See:
+    # https://discourse.gnome.org/t/getting-the-proper-value-from-a-giconstantinfo-and-a-giargument/3713/4
+    #
+    # Thanks @ebassi!
+
+    given GITypeTagEnum($tag) {
+      when GI_TYPE_TAG_BOOLEAN   { $.v_boolean }
+      when GI_TYPE_TAG_INT8      { $.v_int8    }
+      when GI_TYPE_TAG_INT16     { $.v_int16   }
+      when GI_TYPE_TAG_INT32     { $.v_int32   }
+      when GI_TYPE_TAG_INT64     { $.v_int64   }
+      when GI_TYPE_TAG_UINT8     { $.v_uint8   }
+      when GI_TYPE_TAG_UINT16    { $.v_uint16  }
+      when GI_TYPE_TAG_UINT32    { $.v_uint32  }
+      when GI_TYPE_TAG_UINT64    { $.v_uint64  }
+      when GI_TYPE_TAG_FLOAT     { $.v_float   }
+      when GI_TYPE_TAG_DOUBLE    { $.v_double  }
+
+      when GI_TYPE_TAG_UNICHAR   { $.v_string  }
+      when GI_TYPE_TAG_UTF8      { $.v_string  }
+      when GI_TYPE_TAG_FILENAME  { $.v_string  }
+
+      when GI_TYPE_TAG_INTERFACE { $.v_pointer }
+      when GI_TYPE_TAG_GLIST     { $.v_pointer }
+      when GI_TYPE_TAG_GSLIST    { $.v_pointer }
+      when GI_TYPE_TAG_GHASH     { $.v_pointer }
+      when GI_TYPE_TAG_ERROR     { $.v_pointer }
+    }
+  }
 }
 
 class GIArgInfo            is repr<CPointer> does GLib::Roles::Pointers is export { }
