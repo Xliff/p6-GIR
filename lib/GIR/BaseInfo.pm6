@@ -6,6 +6,8 @@ use Method::Also;
 use GIR::Raw::Types;
 use GIR::Raw::BaseInfo;
 
+use GIR::Typelib;
+
 use GLib::Roles::Object;
 
 class GIR::BaseInfo {
