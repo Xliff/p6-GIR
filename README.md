@@ -23,10 +23,10 @@ $ zef install --deps-only .
 ./build.sh
 ```
 
-If you just want to run the examples, you can do:
+If you just want to run `gir-introspect`, you can do:
 
 ```
-./p6gtkexec t/<name of example>
+./p6gtkexec bin/gir-introspect
 ```
 
 Unfortunately, compile times are very long for this project, but I hope you find it interesting!
