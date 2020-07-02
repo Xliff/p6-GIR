@@ -348,7 +348,7 @@ sub print-all-items {
 
 sub MAIN (
   $typelib,            #= Typelib to load
-  $object?,            #= Object found withininclude>
+  $object? is copy,    #= Object to introspect
   :$exclude = (),      #= Comma separated list of types to exclude (takes priority over items listed in --include)
   :$include = (),      #= Comma separated list of types to show
   :$all,               #= List everything
