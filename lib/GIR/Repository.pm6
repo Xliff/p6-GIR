@@ -104,7 +104,7 @@ class GIR::Repository {
 
   method find_by_gtype (Int() $gtype, :$raw = False) is also<find-by-gtype> {
     return Nil unless $gtype;
-    
+
     my $b = g_irepository_find_by_gtype($!gir, $gtype);
 
     $b ??
@@ -151,6 +151,12 @@ class GIR::Repository {
       ( $raw ?? $b !! GIR::BaseInfo.new($b) )
       !!
       Nil;
+  }
+
+  method get_infos is also<get-infos> {
+    do gather for &self.get_n_infos {
+      take self.get_info($_);
+    }
   }
 
   method get_loaded_namespaces is also<get-loaded-namespaces> {
