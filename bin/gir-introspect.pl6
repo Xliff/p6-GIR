@@ -322,36 +322,25 @@ multi sub print-item-info ($a) {
   say "Type '$a' NYI";
 }
 
-sub print-all-items {
-  my $ni = $*repo.get-n-infos($*namespace);
+sub list-item {
+  once {
+    say qq:to/INFO/;
 
-  say qq:to/INFO/;
-
-  Prefix: { $*p }
-  Number of Infos: { $ni }
-  INFO
-
-  my @infos = gather for ^$ni {
-    take $*repo.get-info($*namespace, $_);
-  };
-  my $lin = @infos.map( *.name.chars ).max;
-
-  for @infos {
-    if $*include.elems {
-      next unless .infotype == $*include.any;
-    }
-    say "  { .name.fmt("%-{ $lin }s") } -- { .infotype }"
+    Prefix: { $*p }
+    Number of Infos: { $*repo.get-n-infos($*namespace) }
+    INFO
   }
 
-  exit 0;
+  say "  { $*item.name.fmt("%-{ $*lin }s") } -- { $*item.infotype }"
 }
 
 sub MAIN (
   $typelib,            #= Typelib to load
-  $object? is copy,    #= Object to introspect
+  $pattern? is copy,   #= Object to introspect
   :$exclude = (),      #= Comma separated list of types to exclude (takes priority over items listed in --include)
   :$include = (),      #= Comma separated list of types to show
-  :$all,               #= List everything
+  :$list,              #= Print info list
+  :$all,               #= List all information
   :$constants,         #= List constants
   :$fields,            #= List fields
   :$properties,        #= List properties
@@ -381,12 +370,13 @@ sub MAIN (
   my $*exclude    = $exclude.split(/',' \s+/).grep( *.so );
   my $*include    = $include.split(/',' \s+/).grep( *.so );
 
-  unless $*all || $object {
-    say '--object or --all missing!';
+  unless $list || $pattern {
+    say 'Must call program with --list or an object name pattern!';
     exit 1;
   }
 
-  $object.substr-rw(0, $*p.chars) = '' if $object.substr-eq($*p | $*p.lc, 0);
+  $pattern //= '';
+  $pattern.substr-rw(0, $*p.chars) = '' if $pattern.substr-eq($*p | $*p.lc, 0);
 
   sub checkInclusiveType ($t) {
     unless $t eq GIInfoTypeEnum.enums.keys.any {
@@ -396,18 +386,39 @@ sub MAIN (
     GIInfoTypeEnum.enums{$t};
   }
 
+  sub printItemInfo {
+    die "Do not know how to handle '{ $*info.name }'. Type unknown!"
+      if $*item.infotype == GI_INFO_TYPE_UNRESOLVED;
+
+    $list ?? list-item()
+          !! print-item-info($*item.infotype);
+  }
+
   for $*include, $*exclude {
     $_ .= map({ checkInclusiveType($_) }) if .elems;
   }
   $*include.grep( *.Int != $*exclude.enums.values.any ) if $*exclude;
 
-  print-all-items if $*all && $object.not;
+  my @items = do if $pattern.not {
+    $*repo.get-infos($typelib);
+  } elsif $pattern.contains('*') {
+    $pattern = '. ' ~ $pattern if $pattern.starts-with('*');
+    $*repo.get-infos($typelib).grep({
+      use MONKEY-SEE-NO-EVAL;
+      EVAL ".name ~~ / $pattern /"
+    });
+  } else {
+    $*repo.find-by-name($typelib, $pattern);
+  }
 
-  my $*item = $*repo.find-by-name($typelib, $object);
-  die "Could not find an object named '{ $object }'!" unless $*item;
+  my $*item;
+  my $*lin = @items.map( *.name.chars ).max;
+  for @items {
+    if $*include {
+      next unless .infotype == $*include.any;
+    }
+    $*item = $_;
+    printItemInfo;
+  }
 
-  die "Do not know how to handle '$object'. Type unknown!"
-    if $*item.infotype == GI_INFO_TYPE_UNRESOLVED;
-
-  print-item-info($*item.infotype);
 }
