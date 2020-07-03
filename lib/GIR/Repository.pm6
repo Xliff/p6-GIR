@@ -153,9 +153,9 @@ class GIR::Repository {
       Nil;
   }
 
-  method get_infos is also<get-infos> {
-    do gather for &self.get_n_infos {
-      take self.get_info($_);
+  method get_infos (Str() $namespace) is also<get-infos> {
+    do gather for ^self.get_n_infos($namespace) {
+      take self.get_info($namespace, $_);
     }
   }
 
