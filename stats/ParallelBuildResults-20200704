@@ -1,0 +1,1275 @@
+ === Method::Also === 
+Stage start      :   0.000
+Stage parse      :   1.668
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+Method::Also compile time: 1.8960601
+ === GLib::Roles::Pointers === 
+Stage start      :   0.000
+Stage parse      :   1.742
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.009
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Roles::Pointers compile time: 1.9705348
+ === GIR::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   1.734
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.007
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::Enums compile time: 1.9561912
+ === GLib::Raw::Enums === 
+Stage start      :   0.000
+Stage parse      :   2.057
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.005
+Stage mast       :   0.010
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GLib::Raw::Enums compile time: 2.265792
+ === GLib::Roles::ListData === 
+Stage start      :   0.000
+Stage parse      :   2.026
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Roles::ListData compile time: 2.2514627
+ === GLib::Raw::Subs === 
+Stage start      :   0.000
+Stage parse      :   2.075
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Subs compile time: 2.29515402
+ === GLib::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   2.239
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Exports compile time: 2.40227678
+ === GLib::Raw::Struct_Subs === 
+Stage start      :   0.000
+Stage parse      :   2.330
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Struct_Subs compile time: 2.513518
+ === GLib::Roles::Object === 
+Stage start      :   0.000
+Stage parse      :   2.253
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.002
+Stage moar       :   0.000
+
+GLib::Roles::Object compile time: 2.48498081
+ === GLib::Raw::Definitions === 
+Stage start      :   0.000
+Stage parse      :   2.383
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Definitions compile time: 2.57380384
+ === GLib::Raw::Object === 
+Stage start      :   0.000
+Stage parse      :   2.438
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Object compile time: 2.6282511
+ === GLib::GList === 
+Stage start      :   0.000
+Stage parse      :   2.507
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::GList compile time: 2.693253
+ === GLib::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   2.419
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GLib::Raw::Structs compile time: 2.6290527
+ === GIR::Raw::Structs === 
+Stage start      :   0.000
+Stage parse      :   1.352
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::Structs compile time: 1.535908
+ === GIR::Raw::Exports === 
+Stage start      :   0.000
+Stage parse      :   1.316
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::Exports compile time: 1.56359569
+ === GIR::Raw::Types === 
+Stage start      :   0.000
+Stage parse      :   1.219
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.009
+Stage mbc        :   0.004
+Stage moar       :   0.000
+
+GIR::Raw::Types compile time: 1.372667
+ === GIR::Raw::BaseInfo === 
+Stage start      :   0.000
+Stage parse      :   1.938
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.006
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::BaseInfo compile time: 2.1660854
+ === GIR::Raw::Typelib === 
+Stage start      :   0.000
+Stage parse      :   1.904
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::Typelib compile time: 2.2053201
+ === GIR::Raw::TypeInfo === 
+Stage start      :   0.000
+Stage parse      :   2.039
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::TypeInfo compile time: 2.3426336
+ === GIR::Raw::CallableInfo === 
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at -e:1
+
+GIR::Raw::CallableInfo compile time: 2.4262334
+ === GIR::Raw::VFuncInfo === 
+Stage start      :   0.000
+Stage parse      :   2.380
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::VFuncInfo compile time: 2.5708995
+ === GIR::Raw::Repository === 
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at -e:1
+
+GIR::Raw::Repository compile time: 2.61423641
+ === GIR::Raw::ArgInfo === 
+Stage start      :   0.000
+Stage parse      :   2.473
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::ArgInfo compile time: 2.65119358
+ === GIR::Raw::FieldInfo === 
+Stage start      :   0.000
+Stage parse      :   2.437
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::FieldInfo compile time: 2.678693
+ === GIR::Raw::UnionInfo === 
+Stage start      :   0.000
+Stage parse      :   2.513
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.005
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::UnionInfo compile time: 2.707219
+ === GIR::Raw::EnumInfo === 
+Stage start      :   0.000
+Stage parse      :   2.491
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::EnumInfo compile time: 2.7035296
+ === GIR::Raw::InterfaceInfo === 
+Stage start      :   0.000
+Stage parse      :   2.514
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::InterfaceInfo compile time: 2.75574
+ === GIR::Raw::StructInfo === 
+Stage start      :   0.000
+Stage parse      :   2.470
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::StructInfo compile time: 2.7577342
+ === GIR::Raw::FunctionInfo === 
+Stage start      :   0.000
+Stage parse      :   2.576
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Raw::FunctionInfo compile time: 2.816892
+ === GIR::Typelib === 
+Stage start      :   0.000
+
+    precomp lib/GIR/Typelib.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.579
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.009
+    Stage mast       :   0.045
+    Stage mbc        :   0.003
+Stage parse      :   3.026
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::Typelib compile time: 3.308521
+ === GIR::Raw::ObjectInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/Raw/ObjectInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.149
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.116
+    Stage mbc        :   0.054
+Stage parse      :   5.869
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+
+GIR::Raw::ObjectInfo compile time: 6.1349353
+ === GIR::BaseInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/BaseInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.169
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.052
+    Stage mbc        :   0.011
+Stage parse      :   3.605
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::BaseInfo compile time: 3.75412
+ === GIR::ValueInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/ValueInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.561
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.007
+    Stage mast       :   0.043
+    Stage mbc        :   0.005
+Stage parse      :   3.082
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::ValueInfo compile time: 3.2312588
+ === GIR::TypeInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/TypeInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.724
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.037
+    Stage mbc        :   0.011
+Stage parse      :   3.238
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.006
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::TypeInfo compile time: 3.3931287
+ === GIR::RegisteredTypeInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/RegisteredTypeInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.885
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.009
+    Stage mast       :   0.047
+    Stage mbc        :   0.010
+Stage parse      :   3.428
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::RegisteredTypeInfo compile time: 3.58105829
+ === GIR::ArgInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/ArgInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.597
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.034
+    Stage mbc        :   0.011
+Stage parse      :   3.002
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::ArgInfo compile time: 3.1539226
+ === GIR::CallableInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at -e:1
+
+GIR::CallableInfo compile time: 2.087289
+ === GIR::FieldInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/FieldInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.663
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.032
+    Stage mbc        :   0.008
+Stage parse      :   3.270
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::FieldInfo compile time: 3.421818
+ === GIR::ConstantInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/ConstantInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.779
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.010
+    Stage mast       :   0.036
+    Stage mbc        :   0.016
+Stage parse      :   3.354
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::ConstantInfo compile time: 3.5060998
+ === GIR::FunctionInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at -e:1
+
+GIR::FunctionInfo compile time: 3.6188236
+ === GIR::PropertyInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/PropertyInfo.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.938
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.009
+    Stage mast       :   0.033
+    Stage mbc        :   0.016
+Stage parse      :   3.442
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+
+GIR::PropertyInfo compile time: 3.6066419
+ === GIR::SignalInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/SignalInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/SignalInfo.pm6 (GIR::SignalInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/SignalInfo.pm6 (GIR::SignalInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/SignalInfo.pm6 (GIR::SignalInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/SignalInfo.pm6 (GIR::SignalInfo):9
+
+at -e:1
+
+GIR::SignalInfo compile time: 5.44975993
+ === GIR::UnionInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/UnionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/FunctionInfo.pm6
+        Stage start      :   0.000
+        
+            precomp lib/GIR/CallableInfo.pm6
+            Stage start      :   0.000
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+            Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+            at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/UnionInfo.pm6 (GIR::UnionInfo)
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/UnionInfo.pm6 (GIR::UnionInfo):10
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/UnionInfo.pm6 (GIR::UnionInfo)
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/UnionInfo.pm6 (GIR::UnionInfo):10
+
+at -e:1
+
+GIR::UnionInfo compile time: 5.1401613
+ === GIR::VFuncInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/VFuncInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/VFuncInfo.pm6 (GIR::VFuncInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/VFuncInfo.pm6 (GIR::VFuncInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/VFuncInfo.pm6 (GIR::VFuncInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/VFuncInfo.pm6 (GIR::VFuncInfo):9
+
+at -e:1
+
+GIR::VFuncInfo compile time: 5.0210768
+ === GIR::StructInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/StructInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/FunctionInfo.pm6
+        Stage start      :   0.000
+        
+            precomp lib/GIR/CallableInfo.pm6
+            Stage start      :   0.000
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+            Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+            at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/StructInfo.pm6 (GIR::StructInfo)
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/StructInfo.pm6 (GIR::StructInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/StructInfo.pm6 (GIR::StructInfo)
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/StructInfo.pm6 (GIR::StructInfo):9
+
+at -e:1
+
+GIR::StructInfo compile time: 8.2952764
+ === GIR::EnumInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/EnumInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/FunctionInfo.pm6
+        Stage start      :   0.000
+        
+            precomp lib/GIR/CallableInfo.pm6
+            Stage start      :   0.000
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+            Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+            at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/EnumInfo.pm6 (GIR::EnumInfo)
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/EnumInfo.pm6 (GIR::EnumInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/EnumInfo.pm6 (GIR::EnumInfo)
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/EnumInfo.pm6 (GIR::EnumInfo):9
+
+at -e:1
+
+GIR::EnumInfo compile time: 9.7703193
+ === GIR::InterfaceInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/InterfaceInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/FunctionInfo.pm6
+        Stage start      :   0.000
+        
+            precomp lib/GIR/CallableInfo.pm6
+            Stage start      :   0.000
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+            Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+            at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/InterfaceInfo.pm6 (GIR::InterfaceInfo)
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/InterfaceInfo.pm6 (GIR::InterfaceInfo):13
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/InterfaceInfo.pm6 (GIR::InterfaceInfo)
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/InterfaceInfo.pm6 (GIR::InterfaceInfo):13
+
+at -e:1
+
+GIR::InterfaceInfo compile time: 4.99891076
+ === GIR::Repository === 
+Stage start      :   0.000
+
+    precomp lib/GIR/Repository.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/Repository.pm6 (GIR::Repository)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/Repository.pm6 (GIR::Repository):8
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/Repository.pm6 (GIR::Repository)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/Repository.pm6 (GIR::Repository):8
+
+at -e:1
+
+GIR::Repository compile time: 2.0154512
+ === GIR::ObjectInfo === 
+Stage start      :   0.000
+
+    precomp lib/GIR/ObjectInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/FunctionInfo.pm6
+        Stage start      :   0.000
+        
+            precomp lib/GIR/CallableInfo.pm6
+            Stage start      :   0.000
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            Use of Nil in string context
+              in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+            [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+            Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+            at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+        
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/ObjectInfo.pm6 (GIR::ObjectInfo)
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/ObjectInfo.pm6 (GIR::ObjectInfo):12
+[31m===[0mSORRY![31m===[0m Error while compiling -e
+Stage start      :   0.000
+
+    precomp lib/GIR/FunctionInfo.pm6
+    Stage start      :   0.000
+    
+        precomp lib/GIR/CallableInfo.pm6
+        Stage start      :   0.000
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        Use of Nil in string context
+          in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+        [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+        Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+        at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+    
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/ObjectInfo.pm6 (GIR::ObjectInfo)
+Stage start      :   0.000
+
+    precomp lib/GIR/CallableInfo.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Use of Nil in string context
+      in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    [31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+    Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+    at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo)
+Stage start      :   0.000
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+Use of Nil in string context
+  in any statement_control at /home/cbwood/Projects/rakudo-precomp-nolock2/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+[31m===[0mSORRY![31m===[0m Error while compiling /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo)
+Type check failed in binding to parameter '$repo-id'; expected Str but got Nil (Nil)
+at /home/cbwood/Projects/p6-GIR/lib/GIR/CallableInfo.pm6 (GIR::CallableInfo):8
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/FunctionInfo.pm6 (GIR::FunctionInfo):9
+
+at /home/cbwood/Projects/p6-GIR/lib/GIR/ObjectInfo.pm6 (GIR::ObjectInfo):12
+
+at -e:1
+
+GIR::ObjectInfo compile time: 4.9601537
+
+Total compile time: 44.96921495s
