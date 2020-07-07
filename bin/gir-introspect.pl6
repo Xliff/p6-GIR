@@ -11,7 +11,7 @@ sub list-constant ($ci) {
   my $tn = $ci.type.tag-name;
 
   $val = "'{ $val }'" if $tn = 'char';
-  "  { $ci.name } = { $val } ({ $*p.lc ~ $tn })\n";
+  "Constant:  { $ci.name } = { $val } ({ $*p.lc ~ $tn })\n";
 }
 
 sub list-constants {
@@ -90,16 +90,17 @@ sub get-param-list ($mi) {
 
   sub arg-str ($a) {
     #"{ $a.type.type-tag }{ $a.type.is-pointer ?? '*' !! '' }\t{ $a.name }";
-    "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a) } { $a.name }";
+    my $r = "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a) } { $a.name }";
+
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
 
-  (" " x 25) ~ (
+  (" " x 27) ~ (
     gather for $mi.get-args[] {
       take arg-str($_)
     }
-  ).join(",\n" ~ " " x 25)
+  ).join(",\n" ~ " " x 27)
 }
 
 sub list-interfaces {
@@ -138,7 +139,7 @@ sub list-args ($mi, :$prefix = '') {
   } elsif $mi.n-args {
     $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
                  ptr-mark($rt) ).fmt('%-20s') } { $name } (\n{
-               get-param-list($mi) }\n{ ' ' x 23 })\n\n";
+               get-param-list($mi) }\n{ ' ' x 25 })\n\n";
   } else {
     $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
                  ptr-mark($rt) ).fmt('%-20s') } { $name } ()\n\n";
@@ -200,10 +201,11 @@ multi sub print-item-info (
 
   $*item = GIR::FunctionInfo.new($*item.GIBaseInfo);
   $prefix = $*p.lc if $a == GI_INFO_TYPE_FUNCTION;
+  my $item-type = $a == GI_INFO_TYPE_FUNCTION ?? 'Function' !! 'Callback';
 
   say qq:to/FUNCINFO/;
-
-  { list-args( $*item, :$prefix ) }
+  { $item-type }:
+    { list-args( $*item, :$prefix ) }
   FUNCINFO
 }
 multi sub print-item-info (
@@ -272,8 +274,12 @@ multi sub print-item-info (
     }
   }
 
-  my $parent-name = $*item.parent ?? $*item.parent.name !! '';
-  my $parent-prefix = $*repo.get-c-prefix($*item.parent.namespace);
+  my ($parent-name, $parent-prefix) = do if $a == GI_INFO_TYPE_OBJECT {
+    (
+      $*item.parent ?? $*item.parent.name !! '' // 'None',
+      $*repo.get-c-prefix($*item.parent.namespace) // ''
+    );
+  }
   $parent-name //= 'None';
   $parent-name = $parent-prefix ~ $parent-name unless $parent-name eq 'None';
 
@@ -287,20 +293,24 @@ multi sub print-item-info (
     { list-constants }
     CONSTANTINFO
 
-  say qq:to/FIELDINFO/     if $*all || $*fields;
-    Fields: { $*item.f-elems }
-    { list-fields }
-    FIELDINFO
+  if $a == GI_INFO_TYPE_OBJECT {
+    say qq:to/FIELDINFO/     if $*all || $*fields;
+      Fields: { $*item.f-elems }
+      { list-fields }
+      FIELDINFO
+  }
 
   say qq:to/PROPINFO/      if $*all || $*properties;
     Properties: { $*item.p-elems }
     { list-properties }
     PROPINFO
 
-  say qq:to/IFACEINFO/     if $*all || $*interfaces;
-    Requred interfaces: { $*item.i-elems }
-    { list-interfaces }
-    IFACEINFO
+  if $a == GI_INFO_TYPE_OBJECT {
+    say qq:to/IFACEINFO/     if $*all || $*interfaces;
+      Requred interfaces: { $*item.i-elems }
+      { list-interfaces }
+      IFACEINFO
+  }
 
   say qq:to/METHODINFO/    if $*all || $*methods;
     Methods: { $*item.m-elems }
@@ -394,18 +404,22 @@ sub MAIN (
           !! print-item-info($*item.infotype);
   }
 
+  $*include = GIInfoTypeEnum.enums.values unless $*include;
   for $*include, $*exclude {
-    $_ .= map({ checkInclusiveType($_) }) if .elems;
+    $_ .= map({ checkInclusiveType($_) }).eager if .elems;
   }
   $*include.grep( *.Int != $*exclude.enums.values.any ) if $*exclude;
 
+  # cw: XXX - This block may need to be rewritten for speed. There are too
+  #           many loops through the repo infos.
   my @items = do if $pattern.not {
     $*repo.get-infos($typelib);
   } elsif $pattern.contains('*') {
     $pattern = '. ' ~ $pattern if $pattern.starts-with('*');
     $*repo.get-infos($typelib).grep({
       use MONKEY-SEE-NO-EVAL;
-      EVAL ".name ~~ / $pattern /"
+
+      EVAL ".name ~~ / $pattern /";
     });
   } else {
     $*repo.find-by-name($typelib, $pattern);
