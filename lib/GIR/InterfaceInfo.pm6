@@ -219,7 +219,7 @@ class GIR::InterfaceInfo is GIR::RegisteredTypeInfo {
 
   method get_signal (Int() $n, :$raw = False) is also<get-signal> {
     die "Index $n out of range in { ::?CLASS.^name }.{ $*ROUTINE.name }"
-      if $n > self.get_n_signal - 1;
+      if $n > self.get_n_signals - 1;
 
     my gint $nn = $n;
     my $s = g_interface_info_get_signal($!ii, $nn);
