@@ -89,18 +89,28 @@ sub get-param-list ($mi) {
   return '' unless $mi.n-args;
 
   sub arg-str ($a) {
-    #"{ $a.type.type-tag }{ $a.type.is-pointer ?? '*' !! '' }\t{ $a.name }";
-    my $r = "{ $a.type.tag-name( prefix => $*p ) }{ ptr-mark($a) } { $a.name }";
-
+    # cw: Is it safe to assume $*p, here?
+    my $type = $a.type.tag-name( prefix => $*p );
+    # For arrays there is only one parameter, the element type of the array.
+    if $a.type.tag == GI_TYPE_TAG_ARRAY {
+      my $param = $a.type.get-param-type(0);
+      my $prefix = $*repo.get-c-prefix($param.namespace);
+      $type ~= "[{ $param.tag-name( :$prefix ) }]";
+    }
+    "{ $type }{ ptr-mark($a) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
 
-  (" " x 27) ~ (
+  # cw: -XXX-
+  #     The proper spacing must be based from $*lin. Figure it out.
+  #my $indent = $*lin + 4;
+  my $indent = 27;
+  (" " x $indent ) ~ (
     gather for $mi.get-args[] {
       take arg-str($_)
     }
-  ).join(",\n" ~ " " x 27)
+  ).join(",\n" ~ " " x $indent)
 }
 
 sub list-interfaces {
@@ -406,7 +416,7 @@ sub MAIN (
 
   $*include = GIInfoTypeEnum.enums.values unless $*include;
   for $*include, $*exclude {
-    $_ .= map({ checkInclusiveType($_) }).eager if .elems;
+    $_ = .map({ checkInclusiveType($_) }).eager if .elems;
   }
   $*include.grep( *.Int != $*exclude.enums.values.any ) if $*exclude;
 
