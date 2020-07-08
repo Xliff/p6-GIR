@@ -102,11 +102,8 @@ sub get-param-list ($mi) {
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
 
-  # cw: -XXX-
-  #     The proper spacing must be based from $*lin. Figure it out.
-  #my $indent = $*lin + 4;
-  my $indent = 27;
-  (" " x $indent ) ~ (
+  my $indent = $*lin + 7;
+  (' ' x $indent ) ~ (
     gather for $mi.get-args[] {
       take arg-str($_)
     }
@@ -136,23 +133,19 @@ sub list-args ($mi, :$prefix = '') {
     has $.tag        = GI_TYPE_TAG_VOID;
   }
 
-  my $rt = $mi.return-type // NoReturn.new;
-  my $ret = '';
-  my $name = $mi.name;
-
+  my ($rt, $ret, $name) = ($mi.return-type // NoReturn.new, '  ', $mi.name);
+  my $return-type = $rt.tag-name( prefix => $*p ) ~ ptr-mark($rt);
+  $return-type .= fmt("%-{ $*lin }s");
   $name = "{ $prefix }_{ $name }" if $prefix;
-  $ret ~= '  ';
+
   if $mi.n-args == 1 {
-    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
-                 ptr-mark($rt) ).fmt('%-20s') } { $name } ({
+    $ret ~= "{ $return-type } { $name } ({
                get-param-list($mi) })\n\n";
   } elsif $mi.n-args {
-    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
-                 ptr-mark($rt) ).fmt('%-20s') } { $name } (\n{
-               get-param-list($mi) }\n{ ' ' x 25 })\n\n";
+    $ret ~= "{ $return-type } { $name } (\n{
+               get-param-list($mi) }\n{ ' ' x ($*lin + 5) })\n\n";
   } else {
-    $ret ~= "{ ( $rt.tag-name( prefix => $*p ) ~
-                 ptr-mark($rt) ).fmt('%-20s') } { $name } ()\n\n";
+    $ret ~= "{ $return-type } { $name } ()\n\n";
   }
   $ret;
 }
@@ -317,7 +310,7 @@ multi sub print-item-info (
 
   if $a == GI_INFO_TYPE_OBJECT {
     say qq:to/IFACEINFO/     if $*all || $*interfaces;
-      Requred interfaces: { $*item.i-elems }
+      Required interfaces: { $*item.i-elems }
       { list-interfaces }
       IFACEINFO
   }
@@ -399,11 +392,11 @@ sub MAIN (
   $pattern.substr-rw(0, $*p.chars) = '' if $pattern.substr-eq($*p | $*p.lc, 0);
 
   sub checkInclusiveType ($t) {
-    unless $t eq GIInfoTypeEnum.enums.keys.any {
+    unless $t == GIInfoTypeEnum.enums.any {
       say "Invalid type detected: { $t }!";
       exit 1;
     }
-    GIInfoTypeEnum.enums{$t};
+    $t ~~ Int ?? GIInfoTypeEnum.enums{$t} !! GIInfoTypeEnum($t);
   }
 
   sub printItemInfo {
@@ -414,7 +407,7 @@ sub MAIN (
           !! print-item-info($*item.infotype);
   }
 
-  $*include = GIInfoTypeEnum.enums.values unless $*include;
+  #$*include = GIInfoTypeEnum.enums.values unless $*include;
   for $*include, $*exclude {
     $_ = .map({ checkInclusiveType($_) }).eager if .elems;
   }
@@ -429,6 +422,7 @@ sub MAIN (
     $*repo.get-infos($typelib).grep({
       use MONKEY-SEE-NO-EVAL;
 
+      # cw: This is the slowdown!
       EVAL ".name ~~ / $pattern /";
     });
   } else {
@@ -436,12 +430,16 @@ sub MAIN (
   }
 
   my $*item;
+  # cw: $*lin is incorrect, here. This is the WHOLE list, not the filtered
+  #     one, so $*lin takes the max of items that are sight-unseen.
   my $*lin = @items.map( *.name.chars ).max;
+
   for @items {
     if $*include {
       next unless .infotype == $*include.any;
     }
     $*item = $_;
+
     printItemInfo;
   }
 
