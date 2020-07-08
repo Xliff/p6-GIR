@@ -27,6 +27,17 @@ sub list-constants {
   $ret;
 }
 
+sub fix-tag-name($ti) {
+  my $tag-name = $ti.tag-name( prefix => $*p );
+
+  if $ti.tag == GI_TYPE_TAG_ARRAY {
+    my $param = $ti.get-param-type(0);
+    my $prefix = $*repo.get-c-prefix($param.namespace);
+    $tag-name ~= "[{ $param.tag-name( :$prefix ) ~ ptr-mark($ti) }]";
+  }
+  $tag-name;
+}
+
 multi sub ptr-mark(Bool $b) {
   $b ?? ' *' !! '';
 }
@@ -45,13 +56,23 @@ sub list-propfields ($nf, $method) {
   if $nf {
     my ($tmax, $fmax) = 0 xx 2;
     my @f = do gather for ^$nf {
-      my $f = $*item."$method"($_);
-      my $v = {
+      my $f  = $*item."$method"($_);
+      my $tn = fix-tag-name($f.type) // '';
+      my $v  = {
         flags      => $f.flags,
         field-name => $f.name,
-        type-name  => ($f.type.tag-name( prefix => $*p ) // '') ~
-                       ptr-mark($f.type)
+        type-name  => $tn,
+        pointer    => ptr-mark($f.type),
+        # Check for a vfunc by testing if <field name> eq <type name>
+        virtual    => $f.name eq $tn.substr($*p.chars)
       };
+      # If a vfunc, then special case the name to 'void'
+      $v<type-name>  = 'void'         if $v<virtual>;
+      # Append a pointer mark if a pointer was detected.
+      $v<type-name> ~= $v<pointer>    if $v<pointer>;
+      # Add the pointer mark if the field is a vfunc. These usually will
+      # NOT be detected as pointers. However, just in case... we CYA.
+      $v<type-name> ~= ptr-mark(True) if $v<virtual> && $v<pointer>.so.not;
 
       $fmax = ($fmax, $v<field-name>.chars).max;
       $tmax = ($tmax, $v<type-name>.chars).max;
@@ -63,8 +84,9 @@ sub list-propfields ($nf, $method) {
 
       $rw ~= 'R' if .<flags> +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if .<flags> +& GI_FIELD_IS_WRITABLE;
+      $rw ~= 'V' if .<virtual>;
       $ret ~= "  {  .<type-name>.fmt("%-{ $tmax }s") } {
-                   .<field-name>.fmt("%-{ $fmax}s") } ({ $rw })\n";
+                   .<field-name>.fmt("%-{ $fmax }s") } ({ $rw })\n";
     }
   }
   $ret;
@@ -86,15 +108,7 @@ sub get-param-list ($mi) {
   return '' unless $mi.n-args;
 
   sub arg-str ($a) {
-    # cw: Is it safe to assume $*p, here?
-    my $type = $a.type.tag-name( prefix => $*p );
-    # For arrays there is only one parameter, the element type of the array.
-    if $a.type.tag == GI_TYPE_TAG_ARRAY {
-      my $param = $a.type.get-param-type(0);
-      my $prefix = $*repo.get-c-prefix($param.namespace);
-      $type ~= "[{ $param.tag-name( :$prefix ) }]";
-    }
-    "{ $type }{ ptr-mark($a) } { $a.name }";
+    "{ fix-tag-name($a.type) }{ ptr-mark($a) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
@@ -131,7 +145,7 @@ sub list-args ($mi, :$prefix = '') {
   }
 
   my ($rt, $ret, $name) = ($mi.return-type // NoReturn.new, '  ', $mi.name);
-  my $return-type = $rt.tag-name( prefix => $*p ) ~ ptr-mark($rt);
+  my $return-type = fix-tag-name($rt) ~ ptr-mark($rt);
   $return-type .= fmt("%-{ $*lin }s");
   $name = "{ $prefix }_{ $name }" if $prefix;
 
