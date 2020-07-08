@@ -33,7 +33,13 @@ sub fix-tag-name($ti) {
   if $ti.tag == GI_TYPE_TAG_ARRAY {
     my $param = $ti.get-param-type(0);
     my $prefix = $*repo.get-c-prefix($param.namespace);
-    $tag-name ~= "[{ $param.tag-name( :$prefix ) ~ ptr-mark($ti) }]";
+
+    my @additions;
+    @additions.push: $param.tag-name( :$prefix ) ~ ptr-mark($ti);
+    if (my $s = $ti.array-fixed-size) > 0 {
+      @additions.push: "size = $s";
+    }
+    $tag-name ~= "[{ @additions.join(',') }]";
   }
   $tag-name;
 }
