@@ -193,14 +193,21 @@ sub list-vfuncs {
 sub list-values {
   my $ret = '';
 
+  ($*p ~ $*item.name) ~~ m:g/<[A..Z]><[a..z]>+/;
+  my $enum-prefix = $/.map( *.Str.uc ).join('_');
+
   if $*item.v-elems -> $nv {
     my @values = gather for ^$nv {
       take $*item.get-value($_);
     }
-    my $mnl = @values.map( *.name.chars ).max;
+    my $mnl = @values.map( *.name.chars ).max + $enum-prefix.chars + 1;
+    my $mvl = @values.map( *.value.chars ).max;
 
     for @values {
-      $ret ~= "  { .name.fmt("%-{ $mnl }s") } = { .value }\n";
+      my $ein = $enum-prefix ~ '_' ~ .name.uc.subst('-', '_');
+
+      $ret ~= "  { $ein.fmt("%-{ $mnl }s") } = {
+                 .value.fmt("%-{ $mvl }s") } '{ .name }'\n";
     }
   }
   $ret;
