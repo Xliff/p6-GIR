@@ -267,7 +267,7 @@ multi sub print-item-info (
 
   say qq:to/ENUMINFO/;
 
-    { $typename } name: { $*item.name }
+    { $typename } name: { $*p ~ $*item.name }
     ENUMINFO
 
   say qq:to/VALUEINFO/;
