@@ -12,23 +12,26 @@ grammar GirIntrospectGrammar {
     }
 
     token YesNo { 'Yes' | 'No'   }
-    token RW    { [ 'R' | 'W' ]+ }
+    token RW    { [ 'R' | 'W' | 'V' ]+ }
     token value { <-[\s,()\[\]]>+  }
-    token type  { \w+[ '[' <value> ']' ]? [ \s '*' ]? }
+
+    token type  {
+        \w+[ '[' <value> [\s '*']? [ ',size = ' (\d+) ]? ']' ]? [ \s '*' ]?
+    }
 
     rule Property {
-        <value> '(' <RW> ')'
+        <type> <value> '(' <RW> ')'
     }
 
     rule FunctionCallback {
         <type> <function_name=value> [
-            '('
-                [ <type> <param_name=value> ]+ %% ','
-            ')'
-            |
-            '()'
+          '('
+              [ <type> <param_name=value> ]+ %% ','
+          ')'
+          |
+          '()'
         ]
-     }
+    }
 
     rule Properties {
         'Properties:' (\d+)
@@ -37,7 +40,7 @@ grammar GirIntrospectGrammar {
 
     rule Fields {
         'Fields:' (\d+)
-        [ [ <type> <Property> ]+ ]?
+        [ <Property>+ ]?
     }
 
     rule Methods {
