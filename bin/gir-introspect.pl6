@@ -40,12 +40,12 @@ multi sub ptr-mark (GIR::ArgInfo $a) {
   ptr-mark($ptr);
 }
 
-sub list-fields {
+sub list-propfields ($nf, $method) {
   my $ret = '';
-  if $*item.f-elems -> $nf {
+  if $nf {
     my ($tmax, $fmax) = 0 xx 2;
     my @f = do gather for ^$nf {
-      my $f = $*item.get-field($_);
+      my $f = $*item."$method"($_);
       my $v = {
         flags      => $f.flags,
         field-name => $f.name,
@@ -70,19 +70,16 @@ sub list-fields {
   $ret;
 }
 
-sub list-properties {
-  my $ret = '';
-  if $*item.p-elems -> $nf {
-    for ^$nf {
-      my $fi = $*item.get-property($_);
-      my $rw = '';
-
-      $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
-      $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
-      $ret ~= "  { $fi.type.name // '' } { $fi.name } ({ $rw })\n";
-    }
+sub list-fields {
+  if $*item.f-elems -> $nf {
+    list-propfields($nf, 'get-field');
   }
-  $ret;
+}
+
+sub list-properties {
+  if $*item.p-elems -> $nf {
+    list-propfields($nf, 'get-property');
+  }
 }
 
 sub get-param-list ($mi) {
