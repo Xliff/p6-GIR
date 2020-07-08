@@ -12,7 +12,7 @@ grammar GirIntrospectGrammar {
     }
 
     token YesNo { 'Yes' | 'No'   }
-    token RW    { [ 'R' | 'W' | 'V' ]+ }
+    token flags { [ 'R' | 'W' | 'V' ]+ }
     token value { <-[\s,()\[\]]>+  }
 
     token type  {
@@ -20,7 +20,7 @@ grammar GirIntrospectGrammar {
     }
 
     rule Property {
-        <type> <value> '(' <RW> ')'
+        <type> <value> '(' <flags> ')'
     }
 
     rule FunctionCallback {
@@ -49,14 +49,14 @@ grammar GirIntrospectGrammar {
     }
 
     rule EnumFlags {
-        [ 'Flags' | 'Enum' ] 'name:' <value>
+        [ 'Flags' | 'Enum' ] 'name:' <name=value>
         'Values:' (\d+)
-        [ <value> '=' <value> ]+
+        [ <key=value> '=' <value> '\''$<nick>=(\w+)'\'' ]+
         <Methods>
     }
 
     rule StructUnions {
-        [ 'Struct' | 'Union' ] 'name:' <value> '-- Size:' (\d+) 'bytes'
+        [ 'Struct' | 'Union' ] 'name:' <name=value> '-- Size:' (\d+) 'bytes'
         'Registered:' <YesNo>
 
         <Fields>
@@ -64,7 +64,7 @@ grammar GirIntrospectGrammar {
      }
 
     rule Constant {
-        'Constant:' <value> '=' <value> '(' <type> ')'
+        'Constant:' <name=value> '=' <value> '(' <type> ')'
     }
 
     rule Constants {
@@ -94,7 +94,8 @@ grammar GirIntrospectGrammar {
     }
 
     rule ObjectInterfaces {
-        [ 'Object' | 'Interface' ] 'name:' <value> [ '--- Parent: ' <value> ]?
+        [ 'Object' | 'Interface' ] 'name:' <name=value>
+        [ '--- Parent: ' <parent=value> ]?
         <Constants>
         <Fields>
         <Properties>
