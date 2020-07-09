@@ -2,21 +2,29 @@ grammar GirIntrospectGrammar {
     regex TOP {
         \s+
         [
-        <EnumFlags>         |
-        <ObjectInterfaces>  |
-        <StructUnions>      |
-        <FunctionCallbacks> |
-        <Fields>            |
-        <Constant>
+          <EnumFlags>         |
+          <ObjectInterfaces>  |
+          <StructUnions>      |
+          <FunctionCallbacks> |
+          <Fields>            |
+          <Constant>
         ]+
     }
 
-    token YesNo { 'Yes' | 'No'   }
+    token YesNo { 'Yes' | 'No'         }
     token flags { [ 'R' | 'W' | 'V' ]+ }
-    token value { <-[\s,()\[\]]>+  }
+    token value { <-[\s,()\[\]]>+      }
 
     token type  {
-        \w+[ '[' <value> [\s '*']? [ ',size = ' (\d+) ]? ']' ]? [ \s '*' ]?
+        \w+
+        [
+          '['
+            <type=value>
+            [ \s $<ptr>=('*') ]?
+            [ ',size = ' $<len>=(\d+) ]?
+          ']'
+        ]?
+        [ \s '*' ]?
     }
 
     rule Property {
@@ -56,7 +64,8 @@ grammar GirIntrospectGrammar {
     }
 
     rule StructUnions {
-        [ 'Struct' | 'Union' ] 'name:' <name=value> '-- Size:' (\d+) 'bytes'
+        [ 'Struct' | 'Union' ] 'name:' <name=value>
+        '-- Size:' $<size>=(\d+) 'bytes'
         'Registered:' <YesNo>
 
         <Fields>
