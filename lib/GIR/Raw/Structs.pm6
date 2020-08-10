@@ -11,7 +11,7 @@ use GLib::Roles::Pointers;
 unit package GIR::Raw::Structs;
 
 # Number of times a forced rebuild has been made.
-my constant forced = 4;
+my constant forced = 9;
 
 class GIBaseInfo is repr<CStruct> does GLib::Roles::Pointers is export {
   has gint32   $!dummy1;
