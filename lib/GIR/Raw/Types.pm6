@@ -1,7 +1,5 @@
 use v6;
 
-use CompUnit::Util :re-export;
-
 use GLib::Raw::Exports;
 use GIR::Raw::Exports;
 
@@ -17,6 +15,6 @@ need GIR::Raw::Enums;
 need GIR::Raw::Structs;
 
 BEGIN {
-  re-export($_) for |@glib-exports,
-                    |@gir-exports;
+  glib-re-export($_) for |@glib-exports,
+                         |@gir-exports;
 }
