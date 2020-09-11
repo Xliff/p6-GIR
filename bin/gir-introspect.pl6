@@ -27,6 +27,23 @@ sub list-constants {
   $ret;
 }
 
+sub fix-tag-name($ti) {
+  my $tag-name = $ti.tag-name( prefix => $*p );
+
+  if $ti.tag == GI_TYPE_TAG_ARRAY {
+    my $param = $ti.get-param-type(0);
+    my $prefix = $*repo.get-c-prefix($param.namespace);
+
+    my @additions;
+    @additions.push: $param.tag-name( :$prefix ) ~ ptr-mark($ti);
+    if (my $s = $ti.array-fixed-size) > 0 {
+      @additions.push: "size = $s";
+    }
+    $tag-name ~= "[{ @additions.join(',') }]";
+  }
+  $tag-name;
+}
+
 multi sub ptr-mark(Bool $b) {
   $b ?? ' *' !! '';
 }
@@ -40,18 +57,28 @@ multi sub ptr-mark (GIR::ArgInfo $a) {
   ptr-mark($ptr);
 }
 
-sub list-fields {
+sub list-propfields ($nf, $method) {
   my $ret = '';
-  if $*item.f-elems -> $nf {
+  if $nf {
     my ($tmax, $fmax) = 0 xx 2;
     my @f = do gather for ^$nf {
-      my $f = $*item.get-field($_);
-      my $v = {
+      my $f  = $*item."$method"($_);
+      my $tn = fix-tag-name($f.type) // '';
+      my $v  = {
         flags      => $f.flags,
         field-name => $f.name,
-        type-name  => ($f.type.tag-name( prefix => $*p ) // '') ~
-                       ptr-mark($f.type)
+        type-name  => $tn,
+        pointer    => ptr-mark($f.type),
+        # Check for a vfunc by testing if <field name> eq <type name>
+        virtual    => $f.name eq $tn.substr($*p.chars)
       };
+      # If a vfunc, then special case the name to 'void'
+      $v<type-name>  = 'void'         if $v<virtual>;
+      # Append a pointer mark if a pointer was detected.
+      $v<type-name> ~= $v<pointer>    if $v<pointer>;
+      # Add the pointer mark if the field is a vfunc. These usually will
+      # NOT be detected as pointers. However, just in case... we CYA.
+      $v<type-name> ~= ptr-mark(True) if $v<virtual> && $v<pointer>.so.not;
 
       $fmax = ($fmax, $v<field-name>.chars).max;
       $tmax = ($tmax, $v<type-name>.chars).max;
@@ -63,41 +90,31 @@ sub list-fields {
 
       $rw ~= 'R' if .<flags> +& GI_FIELD_IS_READABLE;
       $rw ~= 'W' if .<flags> +& GI_FIELD_IS_WRITABLE;
+      $rw ~= 'V' if .<virtual>;
       $ret ~= "  {  .<type-name>.fmt("%-{ $tmax }s") } {
-                   .<field-name>.fmt("%-{ $fmax}s") } ({ $rw })\n";
+                   .<field-name>.fmt("%-{ $fmax }s") } ({ $rw })\n";
     }
   }
   $ret;
 }
 
-sub list-properties {
-  my $ret = '';
-  if $*item.p-elems -> $nf {
-    for ^$nf {
-      my $fi = $*item.get-property($_);
-      my $rw = '';
-
-      $rw ~= 'R' if $fi.flags +& GI_FIELD_IS_READABLE;
-      $rw ~= 'W' if $fi.flags +& GI_FIELD_IS_WRITABLE;
-      $ret ~= "  { $fi.type.name // '' } { $fi.name } ({ $rw })\n";
-    }
+sub list-fields {
+  if $*item.f-elems -> $nf {
+    list-propfields($nf, 'get-field');
   }
-  $ret;
+}
+
+sub list-properties {
+  if $*item.p-elems -> $nf {
+    list-propfields($nf, 'get-property');
+  }
 }
 
 sub get-param-list ($mi) {
   return '' unless $mi.n-args;
 
   sub arg-str ($a) {
-    # cw: Is it safe to assume $*p, here?
-    my $type = $a.type.tag-name( prefix => $*p );
-    # For arrays there is only one parameter, the element type of the array.
-    if $a.type.tag == GI_TYPE_TAG_ARRAY {
-      my $param = $a.type.get-param-type(0);
-      my $prefix = $*repo.get-c-prefix($param.namespace);
-      $type ~= "[{ $param.tag-name( :$prefix ) }]";
-    }
-    "{ $type }{ ptr-mark($a) } { $a.name }";
+    "{ fix-tag-name($a.type) }{ ptr-mark($a) } { $a.name }";
   }
 
   return arg-str( $mi.get-arg(0) ) if $mi.n-args == 1;
@@ -134,7 +151,7 @@ sub list-args ($mi, :$prefix = '') {
   }
 
   my ($rt, $ret, $name) = ($mi.return-type // NoReturn.new, '  ', $mi.name);
-  my $return-type = $rt.tag-name( prefix => $*p ) ~ ptr-mark($rt);
+  my $return-type = fix-tag-name($rt) ~ ptr-mark($rt);
   $return-type .= fmt("%-{ $*lin }s");
   $name = "{ $prefix }_{ $name }" if $prefix;
 
@@ -176,14 +193,21 @@ sub list-vfuncs {
 sub list-values {
   my $ret = '';
 
+  ($*p ~ $*item.name) ~~ m:g/<[A..Z]><[a..z]>+/;
+  my $enum-prefix = $/.map( *.Str.uc ).join('_');
+
   if $*item.v-elems -> $nv {
     my @values = gather for ^$nv {
       take $*item.get-value($_);
     }
-    my $mnl = @values.map( *.name.chars ).max;
+    my $mnl = @values.map( *.name.chars ).max + $enum-prefix.chars + 1;
+    my $mvl = @values.map( *.value.chars ).max;
 
     for @values {
-      $ret ~= "  { .name.fmt("%-{ $mnl }s") } = { .value }\n";
+      my $ein = $enum-prefix ~ '_' ~ .name.uc.subst('-', '_');
+
+      $ret ~= "  { $ein.fmt("%-{ $mnl }s") } = {
+                 .value.fmt("%-{ $mvl }s") } '{ .name }'\n";
     }
   }
   $ret;
@@ -250,7 +274,7 @@ multi sub print-item-info (
 
   say qq:to/ENUMINFO/;
 
-    { $typename } name: { $*item.name }
+    { $typename } name: { $*p ~ $*item.name }
     ENUMINFO
 
   say qq:to/VALUEINFO/;
