@@ -1,0 +1,337 @@
+Dependency Generation
+=====================
+real 0.64
+user 1.02
+sys 0.05
+ === GLib::GList ===
+Stage start      :   0.000
+
+    precomp ../p6-GLib/lib/GLib/GList.pm6
+    Stage start      :   0.000
+    
+        precomp ../../Other_Projects/Method-Also/lib/Method/Also.pm6
+        Stage start      :   0.000
+        Stage parse      :   0.320
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.054
+        Stage mast       :   0.021
+        Stage mbc        :   0.003
+    
+        precomp ../p6-GLib/lib/GLib/Raw/Definitions.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Compat/Definitions.pm6
+            Stage start      :   0.000
+            
+                precomp ../p6-GLib/lib/GLib/Roles/Pointers.pm6
+                Stage start      :   0.000
+                Stage parse      :   1.255
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.001
+                Stage mast       :   0.031
+                Stage mbc        :   0.001
+            Stage parse      :   2.703
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.015
+            Stage mast       :   0.072
+            Stage mbc        :   0.002
+        Stage parse      :   4.439
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.016
+        Stage mast       :   0.084
+        Stage mbc        :   0.004
+    
+        precomp ../p6-GLib/lib/GLib/Raw/Structs.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Enums.pm6
+            Stage start      :   0.000
+            Stage parse      :   2.929
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.053
+            Stage mast       :   0.417
+            Stage mbc        :   0.039
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Object.pm6
+            Stage start      :   0.000
+            
+                precomp ../p6-GLib/lib/GLib/Roles/TypeInstance.pm6
+                Stage start      :   0.000
+                Stage parse      :   1.238
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.004
+                Stage mast       :   0.021
+                Stage mbc        :   0.005
+            Stage parse      :   2.781
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.006
+            Stage mast       :   0.046
+            Stage mbc        :   0.005
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Subs.pm6
+            Stage start      :   0.000
+            Stage parse      :   4.153
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.046
+            Stage mast       :   0.205
+            Stage mbc        :   0.070
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Struct_Subs.pm6
+            Stage start      :   0.000
+            Stage parse      :   1.818
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.008
+            Stage mast       :   0.120
+            Stage mbc        :   0.011
+        Stage parse      :  15.220
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.057
+        Stage mast       :   0.274
+        Stage mbc        :   0.016
+    
+        precomp ../p6-GLib/lib/GLib/Raw/GList.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Types.pm6
+            Stage start      :   0.000
+            
+                precomp ../rakudobrew/versions/moar-blead/install/share/perl6/site/sources/C6D7E07EC1EA21D8ADE15195E02C90AB8695E235
+                Stage start      :   0.000
+                Stage parse      :   0.710
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.031
+                Stage mast       :   0.063
+                Stage mbc        :   0.017
+            
+                precomp ../p6-GLib/lib/GLib/Raw/Exports.pm6
+                Stage start      :   0.000
+                Stage parse      :   1.205
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.002
+                Stage mast       :   0.031
+                Stage mbc        :   0.002
+            Stage parse      :   3.504
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.002
+            Stage mast       :   0.037
+            Stage mbc        :   0.002
+        Stage parse      :   6.810
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.022
+        Stage mast       :   0.108
+        Stage mbc        :   0.057
+    Stage parse      :  29.288
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.078
+    Stage mbc        :   0.007
+Adding alias in GLib::Raw::Structs::GLogField for GLogField-Str...
+Stage parse      :  30.669
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Roles: ((Pointers))
+R: GLib::Roles::Pointers
+Adding alias in GLib::Raw::Structs::GValue for g-type...
+Adding alias in GLib::Raw::Structs::GValue for type...
+Adding alias in GLib::GList for GList...
+Adding alias in GLib::GList for current-node...
+Adding alias in GLib::GList for cur...
+Adding alias in GLib::GList for current...
+Adding alias in GLib::GList for node...
+Adding alias in GLib::GList for copy-deep...
+Adding alias in GLib::GList for delete-link...
+Adding alias in GLib::GList for find-custom...
+Adding alias in GLib::GList for free1...
+Adding alias in GLib::GList for free-full...
+Adding alias in GLib::GList for insert-before...
+Adding alias in GLib::GList for insert-sorted...
+Adding alias in GLib::GList for insert-sorted-with-data...
+Adding alias in GLib::GList for nth-data...
+Adding alias in GLib::GList for nth-prev...
+Adding alias in GLib::GList for remove-all...
+Adding alias in GLib::GList for remove-link...
+Adding alias in GLib::GList for sort-with-data...
+Roles: ()
+ === GLib::Raw::Definitions ===
+Stage start      :   0.000
+Stage parse      :   1.132
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Enums ===
+Stage start      :   0.000
+Stage parse      :   1.187
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.008
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GLib::Raw::Exports ===
+Stage start      :   0.000
+Stage parse      :   1.114
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Object ===
+Stage start      :   0.000
+Stage parse      :   1.162
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.009
+Stage moar       :   0.000
+ === GLib::Raw::Struct_Subs ===
+Stage start      :   0.000
+Stage parse      :   1.148
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Raw::Structs ===
+Stage start      :   0.000
+Stage parse      :   1.149
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Raw::Subs ===
+Stage start      :   0.000
+Stage parse      :   1.167
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::ListData ===
+Stage start      :   0.000
+
+    precomp ../p6-GLib/lib/GLib/Roles/ListData.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.442
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.061
+    Stage mbc        :   0.004
+Stage parse      :   2.751
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Roles::Object ===
+Stage start      :   0.000
+
+    precomp ../p6-GLib/lib/GLib/Roles/Object.pm6
+    Stage start      :   0.000
+    
+        precomp ../p6-GLib/lib/GLib/Object/IsType.pm6
+        Stage start      :   0.000
+        Stage parse      :   1.407
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.005
+        Stage mast       :   0.044
+        Stage mbc        :   0.004
+    
+        precomp ../p6-GLib/lib/GLib/Value.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Value.pm6
+            Stage start      :   0.000
+            Stage parse      :   4.520
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.029
+            Stage mast       :   0.166
+            Stage mbc        :   0.085
+        Stage parse      :   6.541
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.043
+        Stage mast       :   0.151
+        Stage mbc        :   0.006
+    
+        precomp ../p6-GLib/lib/GLib/Object/Type.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Raw/Type.pm6
+            Stage start      :   0.000
+            Stage parse      :   5.082
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.035
+            Stage mast       :   0.176
+            Stage mbc        :   0.097
+        
+            precomp ../p6-GLib/lib/GLib/Roles/StaticClass.pm6
+            Stage start      :   0.000
+            Stage parse      :   1.273
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.005
+            Stage mast       :   0.024
+            Stage mbc        :   0.006
+        Stage parse      :   8.316
+        Stage syntaxcheck:   0.000
+        Stage ast        :   0.000
+        Stage optimize   :   0.029
+        Stage mast       :   0.117
+        Stage mbc        :   0.005
+    
+        precomp ../p6-GLib/lib/GLib/Class/Object.pm6
+        Stage start      :   0.000
+        
+            precomp ../p6-GLib/lib/GLib/Object/ParamSpec.pm6
+            Stage start      :   0.000
+            
+                precomp ../p6-GLib/lib/GLib/Object/Raw/ParamSpec.pm6
+                Stage start      :   0.000
+                Stage parse      :   4.281
+                Stage syntaxcheck:   0.000
+                Stage ast        :   0.000
+                Stage optimize   :   0.040
+                Stage mast       :   0.180
+                Stage mbc        :   0.080
+            Stage parse      :   6.542
+            Stage syntaxcheck:   0.000
+            Stage ast        :   0.000
+            Stage optimize   :   0.050
+            Stage mast       :   0.234
+            Stage mbc        :   0.008
+        
+            precomp ../p6-GLib/lib/GLib/Roles/TypedBuffer.pm6
+            Stage start      :   0.000
