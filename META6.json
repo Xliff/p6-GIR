@@ -1,6 +1,6 @@
 {
     "depends": [
-        "p6-GLib",
+        "p6-GLib"
     ],
     "description": "Perl6 library bindings for the GObject Introspection (GIR) system",
     "version": "r0.1",
@@ -57,5 +57,5 @@
         "File::Find"
     ],
     "support": {"source": null},
-    "authors": ["clifton.wood@gmail.com"],
+    "authors": ["clifton.wood@gmail.com"]
 }
