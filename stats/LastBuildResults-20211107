@@ -1,20 +1,20 @@
 Dependency Generation
 =====================
-real 0.65
-user 0.94
-sys 0.04
+real 1.07
+user 1.49
+sys 0.09
  === GLib::GList === (1/51)
 Stage start      :   0.000
-Stage parse      :   1.212
+Stage parse      :   1.796
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.000
-Stage mast       :   0.001
-Stage mbc        :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
 Stage moar       :   0.000
  === GLib::Raw::Definitions === (2/51)
 Stage start      :   0.000
-Stage parse      :   0.979
+Stage parse      :   1.500
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.001
@@ -23,52 +23,52 @@ Stage mbc        :   0.001
 Stage moar       :   0.000
  === GLib::Raw::Enums === (3/51)
 Stage start      :   0.000
-Stage parse      :   1.055
+Stage parse      :   1.623
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.003
-Stage mast       :   0.005
-Stage mbc        :   0.002
+Stage optimize   :   0.004
+Stage mast       :   0.006
+Stage mbc        :   0.003
 Stage moar       :   0.000
  === GLib::Raw::Exceptions === (4/51)
 Stage start      :   0.000
-Stage parse      :   0.841
+Stage parse      :   1.335
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.005
+Stage optimize   :   0.002
+Stage mast       :   0.010
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === GLib::Raw::Exports === (5/51)
 Stage start      :   0.000
-Stage parse      :   0.894
+Stage parse      :   1.369
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
+Stage optimize   :   0.001
+Stage mast       :   0.002
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GLib::Raw::Object === (6/51)
 Stage start      :   0.000
-Stage parse      :   1.066
+Stage parse      :   1.619
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
+Stage optimize   :   0.001
+Stage mast       :   0.002
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === GLib::Raw::Struct_Subs === (7/51)
 Stage start      :   0.000
-Stage parse      :   0.971
+Stage parse      :   1.514
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
+Stage optimize   :   0.001
+Stage mast       :   0.002
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === GLib::Raw::Structs === (8/51)
 Stage start      :   0.000
-Stage parse      :   1.158
+Stage parse      :   1.706
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.001
@@ -77,74 +77,74 @@ Stage mbc        :   0.001
 Stage moar       :   0.000
  === GLib::Raw::Subs === (9/51)
 Stage start      :   0.000
-Stage parse      :   1.137
+Stage parse      :   1.721
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Roles::ListData === (10/51)
+Stage start      :   0.000
+Stage parse      :   1.760
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Roles::Object === (11/51)
+Stage start      :   0.000
+Stage parse      :   2.009
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.002
+Stage moar       :   0.000
+ === GLib::Roles::Pointers === (12/51)
+Stage start      :   0.000
+Stage parse      :   1.481
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.001
 Stage mast       :   0.002
 Stage mbc        :   0.001
 Stage moar       :   0.000
- === GLib::Roles::ListData === (10/51)
-Stage start      :   0.000
-Stage parse      :   1.171
-Stage syntaxcheck:   0.000
-Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
-Stage mbc        :   0.001
-Stage moar       :   0.000
- === GLib::Roles::Object === (11/51)
-Stage start      :   0.000
-Stage parse      :   1.292
-Stage syntaxcheck:   0.000
-Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
-Stage mbc        :   0.002
-Stage moar       :   0.000
- === GLib::Roles::Pointers === (12/51)
-Stage start      :   0.000
-Stage parse      :   0.957
-Stage syntaxcheck:   0.000
-Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.001
-Stage mbc        :   0.001
-Stage moar       :   0.000
  === Method::Also === (13/51)
 Stage start      :   0.000
-Stage parse      :   0.866
+Stage parse      :   1.330
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.005
+Stage optimize   :   0.002
+Stage mast       :   0.006
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === NativeCall === (14/51)
 Stage start      :   0.000
-Stage parse      :   0.944
+Stage parse      :   1.421
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.000
-Stage mast       :   0.032
-Stage mbc        :   0.001
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::Enums === (15/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/Enums.pm6
     Stage start      :   0.000
-    Stage parse      :   1.220
+    Stage parse      :   1.823
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.008
-    Stage mast       :   0.015
-    Stage mbc        :   0.005
-Stage parse      :   2.149
+    Stage optimize   :   0.010
+    Stage mast       :   0.018
+    Stage mbc        :   0.010
+Stage parse      :   3.282
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.002
-Stage mast       :   0.005
+Stage mast       :   0.007
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::Structs === (16/51)
@@ -152,35 +152,35 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/Structs.pm6
     Stage start      :   0.000
-    Stage parse      :   1.298
+    Stage parse      :   1.951
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.012
-    Stage mast       :   0.035
-    Stage mbc        :   0.003
-Stage parse      :   2.284
+    Stage optimize   :   0.015
+    Stage mast       :   0.045
+    Stage mbc        :   0.004
+Stage parse      :   3.487
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.008
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::Exports === (17/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/Exports.pm6
     Stage start      :   0.000
-    Stage parse      :   0.097
+    Stage parse      :   0.133
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.002
-    Stage mast       :   0.003
+    Stage optimize   :   0.003
+    Stage mast       :   0.005
     Stage mbc        :   0.001
-Stage parse      :   0.978
+Stage parse      :   1.523
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.005
+Stage optimize   :   0.002
+Stage mast       :   0.007
 Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::Types === (18/51)
@@ -188,35 +188,35 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/Types.pm6
     Stage start      :   0.000
-    Stage parse      :   1.387
+    Stage parse      :   2.132
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
     Stage optimize   :   0.002
-    Stage mast       :   0.018
-    Stage mbc        :   0.002
-Stage parse      :   2.395
+    Stage mast       :   0.012
+    Stage mbc        :   0.003
+Stage parse      :   3.702
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.005
-Stage mast       :   0.008
-Stage mbc        :   0.004
+Stage optimize   :   0.007
+Stage mast       :   0.012
+Stage mbc        :   0.005
 Stage moar       :   0.000
  === GIR::Raw::UnionInfo === (19/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/UnionInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.279
+    Stage parse      :   1.996
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.035
-    Stage mbc        :   0.009
-Stage parse      :   2.295
+    Stage optimize   :   0.013
+    Stage mast       :   0.045
+    Stage mbc        :   0.011
+Stage parse      :   3.570
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::VFuncInfo === (20/51)
@@ -224,35 +224,35 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/VFuncInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.220
+    Stage parse      :   1.857
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.017
+    Stage optimize   :   0.012
+    Stage mast       :   0.022
     Stage mbc        :   0.007
-Stage parse      :   2.230
+Stage parse      :   3.408
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::ArgInfo === (21/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/ArgInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.288
+    Stage parse      :   1.933
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.013
-    Stage mast       :   0.021
-    Stage mbc        :   0.012
-Stage parse      :   2.305
+    Stage optimize   :   0.012
+    Stage mast       :   0.027
+    Stage mbc        :   0.016
+Stage parse      :   3.510
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::BaseInfo === (22/51)
@@ -260,53 +260,53 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/BaseInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.356
+    Stage parse      :   2.002
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.015
-    Stage mast       :   0.023
-    Stage mbc        :   0.011
-Stage parse      :   2.393
+    Stage optimize   :   0.014
+    Stage mast       :   0.051
+    Stage mbc        :   0.012
+Stage parse      :   3.581
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::CallableInfo === (23/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/CallableInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.386
+    Stage parse      :   2.046
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.014
+    Stage optimize   :   0.017
     Stage mast       :   0.037
-    Stage mbc        :   0.011
-Stage parse      :   2.404
+    Stage mbc        :   0.013
+Stage parse      :   3.620
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::EnumInfo === (24/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/EnumInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.263
+    Stage parse      :   1.879
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.009
-    Stage mast       :   0.017
-    Stage mbc        :   0.007
-Stage parse      :   2.296
+    Stage optimize   :   0.010
+    Stage mast       :   0.038
+    Stage mbc        :   0.008
+Stage parse      :   3.463
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::FieldInfo === (25/51)
@@ -314,17 +314,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/FieldInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.228
+    Stage parse      :   1.793
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.008
-    Stage mast       :   0.064
-    Stage mbc        :   0.005
-Stage parse      :   2.264
+    Stage optimize   :   0.010
+    Stage mast       :   0.025
+    Stage mbc        :   0.007
+Stage parse      :   3.333
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::FunctionInfo === (26/51)
@@ -332,49 +332,49 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/FunctionInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.215
+    Stage parse      :   1.831
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.012
-    Stage mast       :   0.020
-    Stage mbc        :   0.005
-Stage parse      :   2.215
+    Stage optimize   :   0.019
+    Stage mast       :   0.022
+    Stage mbc        :   0.006
+Stage parse      :   3.392
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::InterfaceInfo === (27/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/InterfaceInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.393
+    Stage parse      :   2.106
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.014
-    Stage mast       :   0.040
-    Stage mbc        :   0.013
-Stage parse      :   2.461
+    Stage optimize   :   0.017
+    Stage mast       :   0.057
+    Stage mbc        :   0.015
+Stage parse      :   3.726
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::ObjectInfo === (28/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/ObjectInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.635
+    Stage parse      :   2.416
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.024
-    Stage mast       :   0.050
-    Stage mbc        :   0.023
-Stage parse      :   2.742
+    Stage optimize   :   0.030
+    Stage mast       :   0.060
+    Stage mbc        :   0.028
+Stage parse      :   4.079
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.002
@@ -386,35 +386,35 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/Repository.pm6
     Stage start      :   0.000
-    Stage parse      :   1.548
+    Stage parse      :   2.329
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.025
-    Stage mast       :   0.049
-    Stage mbc        :   0.020
-Stage parse      :   2.676
+    Stage optimize   :   0.031
+    Stage mast       :   0.058
+    Stage mbc        :   0.023
+Stage parse      :   3.976
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.004
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::Raw::StructInfo === (30/51)
 Stage start      :   0.000
 
     precomp lib/GIR/Raw/StructInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.316
+    Stage parse      :   1.909
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
     Stage optimize   :   0.012
-    Stage mast       :   0.023
-    Stage mbc        :   0.009
-Stage parse      :   2.359
+    Stage mast       :   0.027
+    Stage mbc        :   0.011
+Stage parse      :   3.538
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::TypeInfo === (31/51)
@@ -422,17 +422,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/TypeInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.281
+    Stage parse      :   1.948
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.013
-    Stage mast       :   0.019
-    Stage mbc        :   0.008
-Stage parse      :   2.294
+    Stage optimize   :   0.011
+    Stage mast       :   0.025
+    Stage mbc        :   0.010
+Stage parse      :   3.530
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Raw::Typelib === (32/51)
@@ -440,17 +440,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/Raw/Typelib.pm6
     Stage start      :   0.000
-    Stage parse      :   1.255
+    Stage parse      :   1.822
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.013
-    Stage mast       :   0.017
-    Stage mbc        :   0.006
-Stage parse      :   2.258
+    Stage optimize   :   0.010
+    Stage mast       :   0.021
+    Stage mbc        :   0.007
+Stage parse      :   3.409
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Typelib === (33/51)
@@ -458,17 +458,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/Typelib.pm6
     Stage start      :   0.000
-    Stage parse      :   1.197
+    Stage parse      :   1.825
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.021
-    Stage mast       :   0.021
-    Stage mbc        :   0.005
-Stage parse      :   2.241
+    Stage optimize   :   0.030
+    Stage mast       :   0.025
+    Stage mbc        :   0.007
+Stage parse      :   3.396
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::BaseInfo === (34/51)
@@ -476,35 +476,35 @@ Stage start      :   0.000
 
     precomp lib/GIR/BaseInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.799
+    Stage parse      :   2.608
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.014
-    Stage mast       :   0.029
-    Stage mbc        :   0.008
-Stage parse      :   2.914
+    Stage optimize   :   0.022
+    Stage mast       :   0.034
+    Stage mbc        :   0.015
+Stage parse      :   4.295
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
-Stage mbc        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.005
+Stage mbc        :   0.001
 Stage moar       :   0.000
  === GIR::RegisteredTypeInfo === (35/51)
 Stage start      :   0.000
 
     precomp lib/GIR/RegisteredTypeInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.327
+    Stage parse      :   2.022
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.023
-    Stage mbc        :   0.007
-Stage parse      :   2.421
+    Stage optimize   :   0.015
+    Stage mast       :   0.027
+    Stage mbc        :   0.009
+Stage parse      :   3.685
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::TypeInfo === (36/51)
@@ -512,17 +512,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/TypeInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.252
+    Stage parse      :   1.895
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.015
-    Stage mast       :   0.028
-    Stage mbc        :   0.006
-Stage parse      :   2.374
+    Stage optimize   :   0.025
+    Stage mast       :   0.031
+    Stage mbc        :   0.007
+Stage parse      :   3.587
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::ValueInfo === (37/51)
@@ -530,17 +530,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/ValueInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.144
+    Stage parse      :   1.760
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.015
-    Stage mast       :   0.018
-    Stage mbc        :   0.005
-Stage parse      :   2.230
+    Stage optimize   :   0.019
+    Stage mast       :   0.023
+    Stage mbc        :   0.007
+Stage parse      :   3.452
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::ArgInfo === (38/51)
@@ -548,17 +548,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/ArgInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.287
+    Stage parse      :   1.946
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.015
-    Stage mast       :   0.025
-    Stage mbc        :   0.006
-Stage parse      :   2.406
+    Stage optimize   :   0.019
+    Stage mast       :   0.035
+    Stage mbc        :   0.007
+Stage parse      :   3.614
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::CallableInfo === (39/51)
@@ -566,17 +566,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/CallableInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.347
+    Stage parse      :   2.121
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.024
-    Stage mast       :   0.037
-    Stage mbc        :   0.008
-Stage parse      :   2.464
+    Stage optimize   :   0.034
+    Stage mast       :   0.051
+    Stage mbc        :   0.009
+Stage parse      :   3.844
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.012
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::ConstantInfo === (40/51)
@@ -584,17 +584,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/ConstantInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.224
+    Stage parse      :   1.868
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.025
-    Stage mbc        :   0.004
-Stage parse      :   2.296
+    Stage optimize   :   0.016
+    Stage mast       :   0.035
+    Stage mbc        :   0.006
+Stage parse      :   3.540
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::FieldInfo === (41/51)
@@ -602,16 +602,16 @@ Stage start      :   0.000
 
     precomp lib/GIR/FieldInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.273
+    Stage parse      :   1.902
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.013
-    Stage mast       :   0.024
-    Stage mbc        :   0.004
-Stage parse      :   2.373
+    Stage optimize   :   0.016
+    Stage mast       :   0.025
+    Stage mbc        :   0.006
+Stage parse      :   3.562
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
+Stage optimize   :   0.002
 Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
@@ -620,17 +620,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/FunctionInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.436
+    Stage parse      :   2.056
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.015
-    Stage mast       :   0.026
-    Stage mbc        :   0.005
-Stage parse      :   2.569
+    Stage optimize   :   0.018
+    Stage mast       :   0.035
+    Stage mbc        :   0.006
+Stage parse      :   3.774
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::PropertyInfo === (43/51)
@@ -638,13 +638,13 @@ Stage start      :   0.000
 
     precomp lib/GIR/PropertyInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.268
+    Stage parse      :   1.859
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.024
+    Stage optimize   :   0.015
+    Stage mast       :   0.026
     Stage mbc        :   0.006
-Stage parse      :   2.365
+Stage parse      :   3.523
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
 Stage optimize   :   0.002
@@ -656,17 +656,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/SignalInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.380
+    Stage parse      :   2.088
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.011
-    Stage mast       :   0.028
-    Stage mbc        :   0.005
-Stage parse      :   2.489
+    Stage optimize   :   0.014
+    Stage mast       :   0.036
+    Stage mbc        :   0.007
+Stage parse      :   3.836
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::StructInfo === (45/51)
@@ -674,17 +674,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/StructInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.350
+    Stage parse      :   2.015
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.016
-    Stage mast       :   0.030
-    Stage mbc        :   0.005
-Stage parse      :   2.492
+    Stage optimize   :   0.022
+    Stage mast       :   0.041
+    Stage mbc        :   0.007
+Stage parse      :   3.747
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::UnionInfo === (46/51)
@@ -692,17 +692,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/UnionInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.422
+    Stage parse      :   2.092
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.017
-    Stage mast       :   0.031
-    Stage mbc        :   0.006
-Stage parse      :   2.578
+    Stage optimize   :   0.023
+    Stage mast       :   0.038
+    Stage mbc        :   0.008
+Stage parse      :   3.856
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::VFuncInfo === (47/51)
@@ -710,16 +710,16 @@ Stage start      :   0.000
 
     precomp lib/GIR/VFuncInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.485
+    Stage parse      :   2.158
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.016
-    Stage mast       :   0.024
-    Stage mbc        :   0.005
-Stage parse      :   2.644
+    Stage optimize   :   0.024
+    Stage mast       :   0.031
+    Stage mbc        :   0.006
+Stage parse      :   3.859
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
+Stage optimize   :   0.002
 Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
@@ -728,17 +728,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/EnumInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.381
+    Stage parse      :   2.000
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.021
-    Stage mast       :   0.029
-    Stage mbc        :   0.004
-Stage parse      :   2.550
+    Stage optimize   :   0.020
+    Stage mast       :   0.035
+    Stage mbc        :   0.005
+Stage parse      :   3.730
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::InterfaceInfo === (49/51)
@@ -746,17 +746,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/InterfaceInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.556
+    Stage parse      :   2.340
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.025
-    Stage mast       :   0.046
-    Stage mbc        :   0.008
-Stage parse      :   2.766
+    Stage optimize   :   0.035
+    Stage mast       :   0.049
+    Stage mbc        :   0.007
+Stage parse      :   4.177
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::ObjectInfo === (50/51)
@@ -764,17 +764,17 @@ Stage start      :   0.000
 
     precomp lib/GIR/ObjectInfo.pm6
     Stage start      :   0.000
-    Stage parse      :   1.798
+    Stage parse      :   2.765
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.031
-    Stage mast       :   0.049
-    Stage mbc        :   0.019
-Stage parse      :   3.053
+    Stage optimize   :   0.045
+    Stage mast       :   0.067
+    Stage mbc        :   0.023
+Stage parse      :   4.663
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
  === GIR::Repository === (51/51)
@@ -782,20 +782,21 @@ Stage start      :   0.000
 
     precomp lib/GIR/Repository.pm6
     Stage start      :   0.000
-    Stage parse      :   1.768
+    Stage parse      :   2.646
     Stage syntaxcheck:   0.000
     Stage ast        :   0.000
-    Stage optimize   :   0.023
-    Stage mast       :   0.051
-    Stage mbc        :   0.004
-Stage parse      :   2.962
+    Stage optimize   :   0.060
+    Stage mast       :   0.092
+    Stage mbc        :   0.006
+R: GLib::Roles::Object
+Stage parse      :   4.488
 Stage syntaxcheck:   0.000
 Stage ast        :   0.000
-Stage optimize   :   0.001
-Stage mast       :   0.003
+Stage optimize   :   0.002
+Stage mast       :   0.004
 Stage mbc        :   0.000
 Stage moar       :   0.000
 
-real 110.91
-user 132.83
-sys 9.94
+real 169.05
+user 205.30
+sys 14.13
